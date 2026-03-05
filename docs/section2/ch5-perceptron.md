@@ -40,7 +40,7 @@ A4 용지에 점을 찍어 볼게요.
 
 ### 1. 퍼셉트론 = 선 하나 긋기
 
-<div class="key-concept">
+<div class="key-concept" markdown>
 
 **퍼셉트론의 원리**
 
@@ -98,7 +98,7 @@ A4 용지에 점을 찍어 볼게요.
 
 그런데 포기하지 않은 사람들이 있었어요. 그들이 발견한 해결책:
 
-<div class="key-concept">
+<div class="key-concept" markdown>
 
 **선 하나로 안 되면? 여러 개를 조합하면 된다!**
 
@@ -144,7 +144,7 @@ A4 용지에 점을 찍어 볼게요.
 
 퍼셉트론에서 "기준보다 크면 켜고, 작으면 꺼"라는 규칙이 있었죠? 이 규칙을 **활성화 함수**라고 해요.
 
-<div class="key-concept">
+<div class="key-concept" markdown>
 
 **활성화 함수 = 스위치**
 
@@ -283,7 +283,7 @@ A4 용지에 점을 찍어 볼게요.
 
 ## 정리
 
-<div class="key-concept">
+<div class="key-concept" markdown>
 
 **핵심 정리**
 

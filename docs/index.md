@@ -94,7 +94,7 @@ ChatGPT가 문장을 만들어내는 원리를 직접 체험해봐요.
 
 ---
 
-<div class="key-concept">
+<div class="key-concept" markdown>
 <strong>:star: 이 교재의 한 줄 목표</strong><br>
 "ChatGPT가 대답을 만들어내는 원리를, 비유와 실습으로 직접 느끼고 이해한다."
 </div>

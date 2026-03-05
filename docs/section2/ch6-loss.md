@@ -37,7 +37,7 @@ AI가 고양이 사진을 보고 이렇게 대답했다고 해볼게요:
 - 첫 번째: 완전 자신 있게 틀렸으니, 가중치를 **많이** 고쳐야 해요
 - 두 번째: 거의 맞출 뻔했으니, **조금만** 고치면 돼요
 
-<div class="key-concept">
+<div class="key-concept" markdown>
 
 **핵심 개념: 손실(Loss)이란?**
 
@@ -121,7 +121,7 @@ AI가 고양이 사진을 보고 이렇게 대답했다고 해볼게요:
 
 마지막 경우를 보세요. AI가 "고양이는 거의 아닐 거야"라고 **자신 있게 주장했는데 정답이 고양이**였어요. 이때 Cross-Entropy는 **엄청난 벌점**을 매겨요.
 
-<div class="key-concept">
+<div class="key-concept" markdown>
 
 **MSE vs Cross-Entropy, 한 줄 비교**
 
@@ -200,7 +200,7 @@ AI 학습의 본질은 정말 단순해요. **손실을 줄이는 것**, 그게 
     - 음정 50% + 감정 30% + 무대 매너 20%
     - 결과: **균형 잡힌 가수**가 우승
 
-<div class="key-concept">
+<div class="key-concept" markdown>
 
 **핵심 통찰: 기준이 다르면 결과가 다르다**
 
@@ -288,7 +288,7 @@ AI 학습의 본질은 정말 단순해요. **손실을 줄이는 것**, 그게 
 | **Cross-Entropy** | 자신감 있게 틀리면 큰 벌점 | "확신하며 틀리면 최악" 방식 |
 | **학습** | 손실을 줄여나가는 과정 | 시험 점수를 올리려고 공부하는 것 |
 
-<div class="key-concept">
+<div class="key-concept" markdown>
 
 **오늘의 핵심 한 줄**
 

@@ -55,7 +55,7 @@ AI의 학습이 바로 이거예요. **정답은 모르지만, "어느 방향으
 
 **전체 지도가 없어도**, 발밑 기울기만으로 **내리막 방향**을 알 수 있어요. 그 방향으로 한 발짝씩 내디디면, 결국 **골짜기(최저점)**에 도달할 수 있어요.
 
-<div class="key-concept">
+<div class="key-concept" markdown>
 
 **핵심 비유: 안개 속 하산**
 
@@ -166,7 +166,7 @@ U자 모양의 그릇을 떠올려 보세요. 공을 굴리면 바닥으로 갈 
 
     빠르면서도 정확하게 최저점에 도달해요!
 
-<div class="key-concept">
+<div class="key-concept" markdown>
 
 **학습률 정리**
 
@@ -254,7 +254,7 @@ AI도 똑같아요.
 3. 기여한 만큼 **책임을 분배**해요
 4. 각 가중치를 책임만큼 수정해요
 
-<div class="key-concept">
+<div class="key-concept" markdown>
 
 **역전파(Backpropagation)란?**
 
@@ -341,7 +341,7 @@ AI도 똑같아요.
 | **로컬 미니멈** | 진짜 최저점이 아닌 가짜 골짜기 | W자 지형의 얕은 골짜기 |
 | **역전파** | 출력→입력 방향으로 각 가중치의 책임을 분배하는 방법 | 시험 오답을 거꾸로 추적하는 것 |
 
-<div class="key-concept">
+<div class="key-concept" markdown>
 
 **오늘의 핵심 한 줄**
 

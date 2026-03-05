@@ -50,7 +50,7 @@ ChatGPT에게 물어봐요.
 그래서 AI에게 글자를 보여주려면, 먼저 글자를 **숫자 조각**으로 바꿔야 해요.
 이 숫자 조각을 **토큰(Token)**이라고 불러요.
 
-<div class="key-concept">
+<div class="key-concept" markdown>
 <strong>:star: 토큰(Token)이란?</strong><br>
 AI가 텍스트를 처리하기 위해 쪼개 놓은 <strong>숫자 조각</strong>이에요.<br>
 글자 한 개일 수도 있고, 단어 한 개일 수도 있고, 단어의 일부일 수도 있어요.
@@ -192,7 +192,7 @@ AI는 **BPE(Byte Pair Encoding)**라는 똑똑한 방법을 써요.
 
 ## :package: 핵심 정리
 
-<div class="key-concept">
+<div class="key-concept" markdown>
 <strong>:star: 이번 차시의 핵심</strong><br><br>
 <strong>1.</strong> AI는 글자를 직접 보지 못해요. <strong>토큰</strong>이라는 숫자 조각을 봐요.<br>
 <strong>2.</strong> 토큰화는 텍스트를 숫자 조각으로 쪼개는 과정이에요.<br>

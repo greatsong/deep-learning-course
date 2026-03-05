@@ -1,0 +1,2159 @@
+
+<!doctype html>
+<html lang="ko" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="이미지 분류 AI를 직접 만들어보며 데이터와 결과의 관계를 체험하는 수업">
+      
+      
+        <meta name="author" content="석리송">
+      
+      
+      
+        <link rel="prev" href="../tg3-embedding/">
+      
+      
+        <link rel="next" href="../tg5-perceptron/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+    
+    
+      
+        <title>4차시 교사용 지도서 - Teachable Machine - 딥러닝 여행: AI는 어떻게 생각할까?</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans+KR:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Noto Sans KR";--md-code-font:"JetBrains Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="orange">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#4-teachable-machine-ai" class="md-skip">
+          콘텐츠로 이동
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="상단/헤더">
+    <a href="../.." title="딥러닝 여행: AI는 어떻게 생각할까?" class="md-header__button md-logo" aria-label="딥러닝 여행: AI는 어떻게 생각할까?" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17.5 15.5c0 1.11-.89 2-2 2s-2-.89-2-2 .9-2 2-2 2 .9 2 2m-9-2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.89 2-2-.89-2-2-2M23 15v3c0 .55-.45 1-1 1h-1v1c0 1.11-.89 2-2 2H5a2 2 0 0 1-2-2v-1H2c-.55 0-1-.45-1-1v-3c0-.55.45-1 1-1h1c0-3.87 3.13-7 7-7h1V5.73c-.6-.34-1-.99-1-1.73 0-1.1.9-2 2-2s2 .9 2 2c0 .74-.4 1.39-1 1.73V7h1c3.87 0 7 3.13 7 7h1c.55 0 1 .45 1 1m-2 1h-2v-2c0-2.76-2.24-5-5-5h-4c-2.76 0-5 2.24-5 5v2H3v1h2v3h14v-3h2z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            딥러닝 여행: AI는 어떻게 생각할까?
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              4차시 교사용 지도서 - Teachable Machine
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="orange"  aria-label="다크 모드로 전환"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="다크 모드로 전환" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="teal" data-md-color-accent="orange"  aria-label="라이트 모드로 전환"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="라이트 모드로 전환" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="검색" placeholder="검색" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="검색">
+        
+        <button type="reset" class="md-search__icon md-icon" title="지우기" aria-label="지우기" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            검색 초기화
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="탭" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  시작하기
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../section1/ch0-history/" class="md-tabs__link">
+          
+  
+  
+  섹션 1 — 숫자로 이해하는 세상
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../section2/ch4-teachable-machine/" class="md-tabs__link">
+          
+  
+  
+  섹션 2 — 딥러닝 I
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../section3/ch8-attention/" class="md-tabs__link">
+          
+  
+  
+  섹션 3 — 딥러닝 II
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../overview/" class="md-tabs__link">
+          
+  
+  
+  교사용 지도서
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="네비게이션" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="딥러닝 여행: AI는 어떻게 생각할까?" class="md-nav__button md-logo" aria-label="딥러닝 여행: AI는 어떻게 생각할까?" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17.5 15.5c0 1.11-.89 2-2 2s-2-.89-2-2 .9-2 2-2 2 .9 2 2m-9-2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.89 2-2-.89-2-2-2M23 15v3c0 .55-.45 1-1 1h-1v1c0 1.11-.89 2-2 2H5a2 2 0 0 1-2-2v-1H2c-.55 0-1-.45-1-1v-3c0-.55.45-1 1-1h1c0-3.87 3.13-7 7-7h1V5.73c-.6-.34-1-.99-1-1.73 0-1.1.9-2 2-2s2 .9 2 2c0 .74-.4 1.39-1 1.73V7h1c3.87 0 7 3.13 7 7h1c.55 0 1 .45 1 1m-2 1h-2v-2c0-2.76-2.24-5-5-5h-4c-2.76 0-5 2.24-5 5v2H3v1h2v3h14v-3h2z"/></svg>
+
+    </a>
+    딥러닝 여행: AI는 어떻게 생각할까?
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    시작하기
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    섹션 1 — 숫자로 이해하는 세상
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    섹션 1 — 숫자로 이해하는 세상
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../section1/ch0-history/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    0. AI, 70년의 꿈
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../section1/ch1-tokenization/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. AI는 왜 글자를 못 셀까?
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../section1/ch2-probability/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. AI에게 창의적인 답을 시키려면?
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../section1/ch3-embedding/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. 단어로 산수를 할 수 있다고?
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    섹션 2 — 딥러닝 I
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    섹션 2 — 딥러닝 I
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../section2/ch4-teachable-machine/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4. AI야, 이게 뭔지 맞혀봐
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../section2/ch5-perceptron/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5. 최소 뉴런으로 문제를 풀어라
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../section2/ch6-loss/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6. 잘했는지 못했는지, 어떻게 알지?
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../section2/ch7-gradient-descent/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7. 모르면 어떻게 하나요?
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    섹션 3 — 딥러닝 II
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    섹션 3 — 딥러닝 II
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../section3/ch8-attention/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8. AI는 어디를 집중해서 볼까?
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../section3/ch9-transformer/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9. ChatGPT 답이 왜 한 글자씩 나올까?
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    교사용 지도서
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    교사용 지도서
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    수업 운영 가이드
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tg0-history/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    0차시 지도안
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tg1-tokenization/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1차시 지도안
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tg2-probability/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2차시 지도안
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tg3-embedding/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3차시 지도안
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4차시 지도안
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4차시 지도안
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="목차">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      목차
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. 수업 개요
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. 수업 개요">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        학습 목표
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        준비물
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        시간 배분
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 도입 시나리오 (5분)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. 도입 시나리오 (5분)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        교사 대사 전문
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. 이론 전개 포인트 (8분)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. 이론 전개 포인트 (8분)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        설명 순서
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        강조점
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. 실습 운영 상세
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. 실습 운영 상세">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-15" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        실습 1: 우리 모둠만의 분류기 (15분)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="실습 1: 우리 모둠만의 분류기 (15분)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        추천 주제 (모둠별 자유 선택)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        단계별 진행
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        실습 2: 편향 실험 (12분)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="실습 2: 편향 실험 (12분)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        실험 설계
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        기대 결과
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. 학생 예상 반응 &amp; 교사 피드백
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. 학생 예상 반응 &amp; 교사 피드백">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        도입 단계
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        실습 단계
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        편향 실험 단계
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. 수준별 분화 전략
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. 수준별 분화 전략">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        상위 수준 (코딩 관심 학생)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        중위 수준 (보통 학생)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        하위 수준 (어려워하는 학생)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-faq" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. 자주 나오는 질문 FAQ
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. 정리 &amp; 다음 차시 연결 멘트 (10분)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8. 정리 &amp; 다음 차시 연결 멘트 (10분)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        오늘 배운 핵심 정리
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        다음 차시 연결
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_19" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        마무리 활동
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tg5-perceptron/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5차시 지도안
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tg6-loss/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6차시 지도안
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tg7-gradient-descent/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7차시 지도안
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tg8-attention/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8차시 지도안
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tg9-transformer/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9차시 지도안
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="4-teachable-machine-ai">4차시: Teachable Machine으로 나만의 AI 만들기<a class="headerlink" href="#4-teachable-machine-ai" title="Permanent link">&para;</a></h1>
+<h2 id="1">1. 수업 개요<a class="headerlink" href="#1" title="Permanent link">&para;</a></h2>
+<h3 id="_1">학습 목표<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h3>
+<ul>
+<li>학생이 직접 이미지 분류 AI를 만들어보고, <strong>데이터가 결과를 바꾼다</strong>는 것을 체험한다.</li>
+<li>학습 데이터의 양과 질이 AI 성능에 미치는 영향을 실험으로 확인한다.</li>
+<li>편향된 데이터가 만드는 편향된 AI를 직접 경험한다.</li>
+</ul>
+<h3 id="_2">준비물<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>항목</th>
+<th>수량</th>
+<th>비고</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>노트북 + 웹캠</td>
+<td>모둠당 1대</td>
+<td>Chrome 브라우저 필수</td>
+</tr>
+<tr>
+<td>WiFi</td>
+<td>-</td>
+<td>30명 동시 접속 확인</td>
+</tr>
+<tr>
+<td>프로젝터/대형 모니터</td>
+<td>1대</td>
+<td>교사 시연용</td>
+</tr>
+<tr>
+<td>활동지</td>
+<td>1인 1장</td>
+<td>"우리 모둠만의 분류기" 기록용</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition warning">
+<p class="admonition-title">사전 확인</p>
+<p><code>teachablemachine.withgoogle.com</code> 접속이 학교 네트워크에서 차단되지 않는지 전날 확인하세요. 카메라 권한 허용도 미리 테스트하세요.</p>
+</div>
+<h3 id="_3">시간 배분<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>단계</th>
+<th>시간</th>
+<th>활동 내용</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>도입</td>
+<td>5분</td>
+<td>교사 시연 - 10초 AI 만들기</td>
+</tr>
+<tr>
+<td>이론 전개</td>
+<td>8분</td>
+<td>데이터 -&gt; 학습 -&gt; 분류 흐름 설명</td>
+</tr>
+<tr>
+<td>실습 1</td>
+<td>15분</td>
+<td>모둠별 "우리 모둠만의 분류기" 제작</td>
+</tr>
+<tr>
+<td>실습 2</td>
+<td>12분</td>
+<td>편향 실험 + 발표</td>
+</tr>
+<tr>
+<td>정리</td>
+<td>10분</td>
+<td>핵심 정리 + 다음 차시 예고</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="2-5">2. 도입 시나리오 (5분)<a class="headerlink" href="#2-5" title="Permanent link">&para;</a></h2>
+<h3 id="_4">교사 대사 전문<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<blockquote>
+<p>"여러분, 선생님이 지금 AI를 만들 건데요, 10초면 됩니다. 진짜인지 보세요."</p>
+</blockquote>
+<p><strong>[화면: teachablemachine.withgoogle.com 접속, Image Project &gt; Standard image model 선택]</strong></p>
+<blockquote>
+<p>"자, 여기 Class 1에 '주먹'이라고 이름을 붙이고... 웹캠으로 주먹 사진을 찍을게요."</p>
+</blockquote>
+<p><strong>[주먹을 보여주며 연속 촬영 — 약 10장]</strong></p>
+<blockquote>
+<p>"이번엔 Class 2에 '손바닥'... 손바닥도 10장."</p>
+</blockquote>
+<p><strong>[손바닥을 보여주며 연속 촬영 — 약 10장]</strong></p>
+<blockquote>
+<p>"이제 Train Model 버튼을 누르면... 끝! 자, 보세요."</p>
+</blockquote>
+<p><strong>[Preview 패널에서 주먹/손바닥 번갈아 보여주며 실시간 인식 시연]</strong></p>
+<blockquote>
+<p>"주먹 — 98%, 손바닥 — 97%. 이게 AI예요. 여러분이 찍은 사진이 AI의 '교과서'가 된 거예요. 오늘은 여러분이 직접 이걸 만들어볼 겁니다."</p>
+</blockquote>
+<div class="admonition tip">
+<p class="admonition-title">시연 팁</p>
+<p>시연은 <strong>최대한 빠르게, 거침없이</strong> 진행하세요. 학생들의 "와, 진짜?" 반응을 이끌어내는 것이 핵심입니다. 미리 2~3번 연습해 두면 10초 안에 가능합니다.</p>
+</div>
+<hr />
+<h2 id="3-8">3. 이론 전개 포인트 (8분)<a class="headerlink" href="#3-8" title="Permanent link">&para;</a></h2>
+<h3 id="_5">설명 순서<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<p><strong>1단계: 데이터 수집 = AI의 교과서 만들기</strong></p>
+<blockquote>
+<p>"여러분이 시험공부할 때 교과서를 보죠? AI도 마찬가지예요. 우리가 찍은 사진이 AI의 교과서입니다. 교과서가 얇으면? 시험을 잘 못 보겠죠."</p>
+</blockquote>
+<p><strong>2단계: 학습(Training) = 패턴 찾기</strong></p>
+<blockquote>
+<p>"Train 버튼을 누르면 AI가 '주먹은 이렇게 생겼고, 손바닥은 이렇게 생겼구나'를 기억하는 게 아니에요. <strong>패턴</strong>을 찾는 거예요. 주먹은 동그랗고 손가락이 안 보이는 패턴, 손바닥은 넓적하고 손가락이 펼쳐진 패턴."</p>
+</blockquote>
+<p><strong>3단계: 분류(Prediction) = 어디에 가까운지 판단</strong></p>
+<blockquote>
+<p>"새로운 사진이 들어오면 AI는 '이건 주먹 패턴에 더 가깝네' 또는 '손바닥 패턴에 더 가깝네'라고 판단합니다. 그래서 확률이 나오는 거예요."</p>
+</blockquote>
+<h3 id="_6">강조점<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
+<div class="admonition info">
+<p class="admonition-title">핵심 메시지</p>
+<p><strong>"데이터가 달라지면 AI도 달라진다."</strong> 이 문장을 칠판에 크게 쓰거나 슬라이드에 띄워두세요. 오늘 수업의 모든 활동이 이 문장으로 귀결됩니다.</p>
+</div>
+<hr />
+<h2 id="4">4. 실습 운영 상세<a class="headerlink" href="#4" title="Permanent link">&para;</a></h2>
+<h3 id="1-15">실습 1: 우리 모둠만의 분류기 (15분)<a class="headerlink" href="#1-15" title="Permanent link">&para;</a></h3>
+<h4 id="_7">추천 주제 (모둠별 자유 선택)<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
+<table>
+<thead>
+<tr>
+<th>주제</th>
+<th>클래스 예시</th>
+<th>난이도</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>가위바위보</td>
+<td>가위 / 바위 / 보</td>
+<td>쉬움</td>
+</tr>
+<tr>
+<td>표정 분류</td>
+<td>웃음 / 무표정 / 찡그림</td>
+<td>보통</td>
+</tr>
+<tr>
+<td>필통 속 물건</td>
+<td>펜 / 지우개 / 자</td>
+<td>보통</td>
+</tr>
+<tr>
+<td>손가락 숫자</td>
+<td>1 / 2 / 3 / 4 / 5</td>
+<td>어려움</td>
+</tr>
+</tbody>
+</table>
+<h4 id="_8">단계별 진행<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
+<table>
+<thead>
+<tr>
+<th>단계</th>
+<th>시간</th>
+<th>활동</th>
+<th>교사 역할</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1. 주제 선정</td>
+<td>2분</td>
+<td>모둠 회의로 주제 결정</td>
+<td>빠르게 결정하도록 독려</td>
+</tr>
+<tr>
+<td>2. 데이터 촬영</td>
+<td>5분</td>
+<td>클래스당 최소 30장 촬영</td>
+<td>순회하며 촬영 상태 확인</td>
+</tr>
+<tr>
+<td>3. 학습</td>
+<td>2분</td>
+<td>Train Model 클릭 후 대기</td>
+<td>"학습 중 화면을 관찰하세요" 안내</td>
+</tr>
+<tr>
+<td>4. 테스트</td>
+<td>3분</td>
+<td>다양한 상황에서 테스트</td>
+<td>"다른 배경, 다른 거리에서 해보세요"</td>
+</tr>
+<tr>
+<td>5. 발표 준비</td>
+<td>3분</td>
+<td>결과 정리, 성공/실패 사례 기록</td>
+<td>활동지 작성 확인</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition tip">
+<p class="admonition-title">촬영 팁 안내</p>
+<p>학생들에게 미리 안내하세요: "한 각도에서만 찍지 말고, <strong>살짝 돌리고, 가까이, 멀리</strong>에서도 찍으세요. AI가 더 다양한 패턴을 배울 수 있어요."</p>
+</div>
+<h3 id="2-12">실습 2: 편향 실험 (12분)<a class="headerlink" href="#2-12" title="Permanent link">&para;</a></h3>
+<blockquote>
+<p>"자, 이제 일부러 AI를 망가뜨려 봅시다!"</p>
+</blockquote>
+<h4 id="_9">실험 설계<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h4>
+<ol>
+<li><strong>편향 데이터 수집</strong> (3분): 창가 밝은 곳에서<strong>만</strong> 모든 사진을 촬영</li>
+<li><strong>학습</strong> (2분): Train Model</li>
+<li><strong>테스트</strong> (3분): 복도, 교실 안쪽 등 <strong>어두운 곳</strong>에서 테스트 → 높은 확률로 실패</li>
+<li><strong>토론 + 발표</strong> (4분): "왜 실패했을까?" → "데이터가 편향되면 AI도 편향된다"</li>
+</ol>
+<h4 id="_10">기대 결과<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h4>
+<blockquote>
+<p>"밝은 곳에서만 찍었으니까, AI는 '밝기'를 기준으로 분류하게 됐어요. 손 모양이 아니라요. 이게 바로 <strong>데이터 편향</strong>이에요."</p>
+</blockquote>
+<hr />
+<h2 id="5">5. 학생 예상 반응 &amp; 교사 피드백<a class="headerlink" href="#5" title="Permanent link">&para;</a></h2>
+<h3 id="_11">도입 단계<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>학생 반응</th>
+<th>교사 피드백</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>"이게 진짜 AI예요?"</td>
+<td>"네! 단순하지만 진짜 AI예요. 사진에서 패턴을 찾아 분류하는 거니까요. 여러분도 지금 바로 만들 수 있어요."</td>
+</tr>
+<tr>
+<td>"ChatGPT랑 다른 거예요?"</td>
+<td>"ChatGPT는 텍스트를 다루는 AI고, 이건 이미지를 분류하는 AI예요. 원리는 비슷하지만 하는 일이 달라요."</td>
+</tr>
+<tr>
+<td>"와 신기하다!" (코딩 관심 학생)</td>
+<td>"오늘 직접 만들면 더 신기할 거예요. 심화로 모델 내보내기까지 해볼 수 있어요."</td>
+</tr>
+</tbody>
+</table>
+<h3 id="_12">실습 단계<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>학생 반응</th>
+<th>교사 피드백</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>"웹캠이 안 돼요"</td>
+<td>"크롬 주소창 왼쪽 자물쇠 아이콘 클릭 → 카메라 → 허용으로 바꿔주세요. 그래도 안 되면 크롬을 완전히 닫았다 다시 열어보세요."</td>
+</tr>
+<tr>
+<td>"학습이 안 돼요 / 결과가 이상해요"</td>
+<td>"사진 수를 확인해 보세요. 클래스당 최소 20장은 있어야 해요. 배경이 너무 비슷하면 AI가 손이 아니라 배경으로 분류할 수 있어요."</td>
+</tr>
+<tr>
+<td>"가위를 추가했는데 잘 안 돼요"</td>
+<td>"각 클래스당 데이터를 <strong>비슷한 양</strong>으로 맞춰주세요. 주먹 50장, 가위 5장이면 AI가 뭐든 주먹이라고 할 거예요."</td>
+</tr>
+<tr>
+<td>"왜 뒤집으면 안 되죠?"</td>
+<td>"AI는 패턴으로 분류하니까 각도가 크게 바뀌면 다른 패턴으로 인식해요. 그래서 다양한 각도로 촬영하는 게 중요한 거예요."</td>
+</tr>
+<tr>
+<td>"이걸 앱으로 만들 수 있어요?" (코딩 관심 학생)</td>
+<td>"네, Export Model 버튼으로 모델을 내보내서 웹이나 앱에 넣을 수 있어요. 관심 있으면 수업 후에 링크 알려줄게요."</td>
+</tr>
+<tr>
+<td>"너무 쉬운데요, 더 할 거 없어요?"</td>
+<td>"5개 클래스까지 늘려보세요. 그리고 Preview의 확률값이 어떻게 변하는지 관찰해 보세요."</td>
+</tr>
+<tr>
+<td>"우리 모둠은 뭘 해야 해요?" (결정 못하는 모둠)</td>
+<td>"가위바위보가 가장 쉬워요. 먼저 그걸로 시작하고, 시간 남으면 다른 주제로 바꿔도 돼요."</td>
+</tr>
+</tbody>
+</table>
+<h3 id="_13">편향 실험 단계<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>학생 반응</th>
+<th>교사 피드백</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>"어두운 데서 하니까 진짜 안 돼요!"</td>
+<td>"바로 그거예요! AI는 우리가 준 데이터에서만 배우니까, 밝은 곳 데이터만 줬으면 어두운 곳은 모르는 거예요."</td>
+</tr>
+<tr>
+<td>"그럼 실제 AI도 이런 문제가 있어요?"</td>
+<td>"네, 실제로 얼굴 인식 AI가 특정 피부색을 잘 못 인식하는 문제가 있었어요. 데이터가 편향됐기 때문이에요. 아주 중요한 문제예요."</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="6">6. 수준별 분화 전략<a class="headerlink" href="#6" title="Permanent link">&para;</a></h2>
+<h3 id="_14">상위 수준 (코딩 관심 학생)<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h3>
+<div class="admonition tip">
+<p class="admonition-title">심화 활동</p>
+<ul>
+<li><strong>모델 내보내기</strong>: Export Model → TensorFlow.js로 내보내기 체험</li>
+<li><strong>확률값 분석</strong>: Preview 패널의 확률 바 관찰 — "왜 98%가 아니라 73%일까?"</li>
+<li><strong>추가 클래스 실험</strong>: 5개 이상 클래스로 확장 시 정확도 변화 관찰</li>
+<li><strong>데이터 수 실험</strong>: 10장 vs 50장 vs 100장의 성능 차이 비교</li>
+</ul>
+</div>
+<h3 id="_15">중위 수준 (보통 학생)<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h3>
+<div class="admonition note">
+<p class="admonition-title">기본 목표</p>
+<ul>
+<li>기본 <strong>3클래스 분류기</strong> 완성 (가위바위보 등)</li>
+<li>클래스당 30장 이상 촬영</li>
+<li>편향 실험 참여 및 결과 관찰</li>
+<li>활동지의 가이드 질문에 답하며 정리</li>
+</ul>
+</div>
+<h3 id="_16">하위 수준 (어려워하는 학생)<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h3>
+<div class="admonition warning">
+<p class="admonition-title">지원 방안</p>
+<ul>
+<li>교사 또는 상위 학생과 함께 <strong>2클래스부터</strong> 시작 (주먹/손바닥)</li>
+<li><strong>성공 체험 우선</strong>: 2클래스가 잘 되면 칭찬 후 3클래스로 확장</li>
+<li>직접 조작이 어려우면 <strong>촬영 역할</strong>만 맡겨도 OK ("네가 포즈를 취해줘")</li>
+<li>"결과를 관찰하고 활동지에 적는 것만으로도 훌륭해요"</li>
+</ul>
+</div>
+<hr />
+<h2 id="7-faq">7. 자주 나오는 질문 FAQ<a class="headerlink" href="#7-faq" title="Permanent link">&para;</a></h2>
+<details class="question">
+<summary>Q1. Teachable Machine은 무료인가요?</summary>
+<p>네, Google에서 제공하는 완전 무료 도구입니다. 회원가입도 필요 없습니다. 다만 학습된 모델은 브라우저를 닫으면 사라지므로, 저장하려면 Export를 해야 합니다.</p>
+</details>
+<details class="question">
+<summary>Q2. 웹캠이 없는 노트북은 어떻게 하나요?</summary>
+<p>스마트폰으로 사진을 찍어 업로드할 수 있습니다. Teachable Machine의 각 클래스에서 Upload 옵션을 선택하면 됩니다. 또는 외장 웹캠을 연결할 수 있습니다.</p>
+</details>
+<details class="question">
+<summary>Q3. 학습 시간이 너무 오래 걸려요.</summary>
+<p>이미지 수가 너무 많거나(클래스당 200장 이상) 노트북 사양이 낮으면 오래 걸릴 수 있습니다. 클래스당 30~50장이면 충분합니다. Chrome 외 다른 탭을 모두 닫아보세요.</p>
+</details>
+<details class="question">
+<summary>Q4. 이 수업에서 코딩을 해야 하나요?</summary>
+<p>아닙니다. Teachable Machine은 코딩 없이 클릭과 촬영만으로 AI를 만드는 도구입니다. 코딩에 관심 있는 학생에게는 모델 내보내기 후 JavaScript 코드 연동을 안내할 수 있습니다.</p>
+</details>
+<details class="question">
+<summary>Q5. 학생들이 부적절한 이미지를 촬영하면 어떻게 하나요?</summary>
+<p>수업 시작 전에 "수업 목적에 맞는 이미지만 촬영합니다"라는 규칙을 명확히 안내하세요. 순회하며 모니터링하되, 웹캠 실시간 촬영이므로 저장되지 않는다는 점을 설명해 주세요.</p>
+</details>
+<hr />
+<h2 id="8-10">8. 정리 &amp; 다음 차시 연결 멘트 (10분)<a class="headerlink" href="#8-10" title="Permanent link">&para;</a></h2>
+<h3 id="_17">오늘 배운 핵심 정리<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h3>
+<blockquote>
+<p>"오늘 우리가 한 일을 정리해 볼게요."</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>단계</th>
+<th>우리가 한 것</th>
+<th>AI 용어</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>사진 촬영</td>
+<td>주먹/손바닥 사진 찍기</td>
+<td><strong>데이터 수집</strong></td>
+</tr>
+<tr>
+<td>Train 클릭</td>
+<td>AI가 패턴을 찾게 하기</td>
+<td><strong>학습(Training)</strong></td>
+</tr>
+<tr>
+<td>테스트</td>
+<td>새 사진으로 확인하기</td>
+<td><strong>추론(Inference)</strong></td>
+</tr>
+<tr>
+<td>편향 실험</td>
+<td>한쪽 데이터만 넣기</td>
+<td><strong>데이터 편향(Bias)</strong></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>"가장 중요한 건 뭐였죠? <strong>데이터가 달라지면 AI도 달라진다.</strong> 이거 하나만 기억하면 오늘 수업 성공이에요."</p>
+</blockquote>
+<h3 id="_18">다음 차시 연결<a class="headerlink" href="#_18" title="Permanent link">&para;</a></h3>
+<blockquote>
+<p>"그런데 여러분, Teachable Machine 안에서 실제로 무슨 일이 벌어지고 있었을까요? Train 버튼을 누르면 컴퓨터가 뭘 하는 걸까요? 다음 시간에는 이 <strong>AI의 속을 뜯어볼</strong> 거예요. '퍼셉트론'이라는 아주 작은 뇌세포 하나에서 시작합니다. 기대하세요!"</p>
+</blockquote>
+<h3 id="_19">마무리 활동<a class="headerlink" href="#_19" title="Permanent link">&para;</a></h3>
+<ul>
+<li>활동지 수거 또는 사진 촬영 후 LMS 업로드</li>
+<li>자기 평가 체크리스트 작성 (1분)<ul>
+<li>[ ] 나는 AI 분류기를 직접 만들어 보았다</li>
+<li>[ ] 데이터의 양이 AI 성능에 영향을 준다는 것을 알게 되었다</li>
+<li>[ ] 편향된 데이터의 위험성을 이해했다</li>
+</ul>
+</li>
+</ul>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  맨위로
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="하단/푸터" >
+        
+          
+          <a href="../tg3-embedding/" class="md-footer__link md-footer__link--prev" aria-label="이전: 3차시 지도안">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                이전
+              </span>
+              <div class="md-ellipsis">
+                3차시 지도안
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../tg5-perceptron/" class="md-footer__link md-footer__link--next" aria-label="다음: 5차시 지도안">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                다음
+              </span>
+              <div class="md-ellipsis">
+                5차시 지도안
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["content.code.copy", "content.code.annotate", "navigation.instant", "navigation.tabs", "navigation.top", "navigation.footer", "navigation.sections", "toc.integrate"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\ud074\ub9bd\ubcf4\ub4dc\uc5d0 \ubcf5\uc0ac\ub428", "clipboard.copy": "\ud074\ub9bd\ubcf4\ub4dc\ub85c \ubcf5\uc0ac", "search.result.more.one": "\uc774 \ubb38\uc11c\uc5d0\uc11c 1\uac1c\uc758 \uac80\uc0c9 \uacb0\uacfc \ub354 \ubcf4\uae30", "search.result.more.other": "\uc774 \ubb38\uc11c\uc5d0\uc11c #\uac1c\uc758 \uac80\uc0c9 \uacb0\uacfc \ub354 \ubcf4\uae30", "search.result.none": "\uac80\uc0c9\uc5b4\uc640 \uc77c\uce58\ud558\ub294 \ubb38\uc11c\uac00 \uc5c6\uc2b5\ub2c8\ub2e4", "search.result.one": "1\uac1c\uc758 \uc77c\uce58\ud558\ub294 \ubb38\uc11c", "search.result.other": "#\uac1c\uc758 \uc77c\uce58\ud558\ub294 \ubb38\uc11c", "search.result.placeholder": "\uac80\uc0c9\uc5b4\ub97c \uc785\ub825\ud558\uc138\uc694", "search.result.term.missing": "\ud3ec\ud568\ub418\uc9c0 \uc54a\uc740 \uac80\uc0c9\uc5b4", "select.version": "\ubc84\uc804 \uc120\ud0dd"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

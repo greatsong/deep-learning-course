@@ -1,0 +1,1983 @@
+
+<!doctype html>
+<html lang="ko" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="고등학교 2학년 인공지능 기초 — 10차시 이론+실습 교재">
+      
+      
+        <meta name="author" content="석리송">
+      
+      
+      
+        <link rel="prev" href="../ch6-loss/">
+      
+      
+        <link rel="next" href="../../section3/ch8-attention/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+    
+    
+      
+        <title>7. 모르면 어떻게 하나요? - 딥러닝 여행: AI는 어떻게 생각할까?</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans+KR:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Noto Sans KR";--md-code-font:"JetBrains Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="orange">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#7" class="md-skip">
+          콘텐츠로 이동
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="상단/헤더">
+    <a href="../.." title="딥러닝 여행: AI는 어떻게 생각할까?" class="md-header__button md-logo" aria-label="딥러닝 여행: AI는 어떻게 생각할까?" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17.5 15.5c0 1.11-.89 2-2 2s-2-.89-2-2 .9-2 2-2 2 .9 2 2m-9-2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.89 2-2-.89-2-2-2M23 15v3c0 .55-.45 1-1 1h-1v1c0 1.11-.89 2-2 2H5a2 2 0 0 1-2-2v-1H2c-.55 0-1-.45-1-1v-3c0-.55.45-1 1-1h1c0-3.87 3.13-7 7-7h1V5.73c-.6-.34-1-.99-1-1.73 0-1.1.9-2 2-2s2 .9 2 2c0 .74-.4 1.39-1 1.73V7h1c3.87 0 7 3.13 7 7h1c.55 0 1 .45 1 1m-2 1h-2v-2c0-2.76-2.24-5-5-5h-4c-2.76 0-5 2.24-5 5v2H3v1h2v3h14v-3h2z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            딥러닝 여행: AI는 어떻게 생각할까?
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              7. 모르면 어떻게 하나요?
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="orange"  aria-label="다크 모드로 전환"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="다크 모드로 전환" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="teal" data-md-color-accent="orange"  aria-label="라이트 모드로 전환"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="라이트 모드로 전환" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="검색" placeholder="검색" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="검색">
+        
+        <button type="reset" class="md-search__icon md-icon" title="지우기" aria-label="지우기" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            검색 초기화
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="탭" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  시작하기
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../section1/ch0-history/" class="md-tabs__link">
+          
+  
+  
+  섹션 1 — 숫자로 이해하는 세상
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../ch4-teachable-machine/" class="md-tabs__link">
+          
+  
+  
+  섹션 2 — 딥러닝 I
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../section3/ch8-attention/" class="md-tabs__link">
+          
+  
+  
+  섹션 3 — 딥러닝 II
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../teacher-guide/overview/" class="md-tabs__link">
+          
+  
+  
+  교사용 지도서
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="네비게이션" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="딥러닝 여행: AI는 어떻게 생각할까?" class="md-nav__button md-logo" aria-label="딥러닝 여행: AI는 어떻게 생각할까?" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17.5 15.5c0 1.11-.89 2-2 2s-2-.89-2-2 .9-2 2-2 2 .9 2 2m-9-2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.89 2-2-.89-2-2-2M23 15v3c0 .55-.45 1-1 1h-1v1c0 1.11-.89 2-2 2H5a2 2 0 0 1-2-2v-1H2c-.55 0-1-.45-1-1v-3c0-.55.45-1 1-1h1c0-3.87 3.13-7 7-7h1V5.73c-.6-.34-1-.99-1-1.73 0-1.1.9-2 2-2s2 .9 2 2c0 .74-.4 1.39-1 1.73V7h1c3.87 0 7 3.13 7 7h1c.55 0 1 .45 1 1m-2 1h-2v-2c0-2.76-2.24-5-5-5h-4c-2.76 0-5 2.24-5 5v2H3v1h2v3h14v-3h2z"/></svg>
+
+    </a>
+    딥러닝 여행: AI는 어떻게 생각할까?
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    시작하기
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    섹션 1 — 숫자로 이해하는 세상
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    섹션 1 — 숫자로 이해하는 세상
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../section1/ch0-history/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    0. AI, 70년의 꿈
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../section1/ch1-tokenization/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. AI는 왜 글자를 못 셀까?
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../section1/ch2-probability/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. AI에게 창의적인 답을 시키려면?
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../section1/ch3-embedding/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. 단어로 산수를 할 수 있다고?
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    섹션 2 — 딥러닝 I
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    섹션 2 — 딥러닝 I
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch4-teachable-machine/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4. AI야, 이게 뭔지 맞혀봐
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch5-perceptron/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5. 최소 뉴런으로 문제를 풀어라
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ch6-loss/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6. 잘했는지 못했는지, 어떻게 알지?
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7. 모르면 어떻게 하나요?
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7. 모르면 어떻게 하나요?
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="목차">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      목차
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        이번에 배울 것
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        도입: 숫자 맞추기 게임
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-ai" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        개념 1: AI는 정답을 모른다 — 방향만 안다
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="개념 1: AI는 정답을 모른다 — 방향만 안다">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        눈 감고 산 내려가기
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-gradient-descent" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        개념 2: 경사하강법(Gradient Descent)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="개념 2: 경사하강법(Gradient Descent)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1차원으로 쉽게 이해해요
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-learning-rate" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        개념 3: 학습률(Learning Rate) — 보폭의 크기
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        개념 4: 함정 — 로컬 미니멈(지역 최솟값)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="개념 4: 함정 — 로컬 미니멈(지역 최솟값)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#w" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        W자 지형: 가짜 골짜기에 빠질 수 있다!
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        해결 방법들
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-backpropagation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        개념 5: 역전파(Backpropagation) — 간략히
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="개념 5: 역전파(Backpropagation) — 간략히">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        오답 분석의 원리
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        실습 안내
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="실습 안내">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-3d" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        실습 1: 경사하강법 3D 체험
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-tensorflow-playground" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        실습 2: TensorFlow Playground에서 학습률 실험
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        실습 3: 등고선 활동지 (종이 활동)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        자주 하는 오해
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        정리
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    섹션 3 — 딥러닝 II
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    섹션 3 — 딥러닝 II
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../section3/ch8-attention/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8. AI는 어디를 집중해서 볼까?
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../section3/ch9-transformer/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9. ChatGPT 답이 왜 한 글자씩 나올까?
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    교사용 지도서
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    교사용 지도서
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../teacher-guide/overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    수업 운영 가이드
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../teacher-guide/tg0-history/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    0차시 지도안
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../teacher-guide/tg1-tokenization/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1차시 지도안
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../teacher-guide/tg2-probability/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2차시 지도안
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../teacher-guide/tg3-embedding/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3차시 지도안
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../teacher-guide/tg4-teachable-machine/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4차시 지도안
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../teacher-guide/tg5-perceptron/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5차시 지도안
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../teacher-guide/tg6-loss/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6차시 지도안
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../teacher-guide/tg7-gradient-descent/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7차시 지도안
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../teacher-guide/tg8-attention/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8차시 지도안
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../teacher-guide/tg9-transformer/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9차시 지도안
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="7">7차시: 모르면 어떻게 하나요, 감으로 찍어요? (경사하강법)<a class="headerlink" href="#7" title="Permanent link">&para;</a></h1>
+<h2 id="_1">이번에 배울 것<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<ul>
+<li>[x] AI가 정답을 모르는 상태에서 어떻게 학습하는지 이해해요</li>
+<li>[x] 경사하강법(Gradient Descent)의 원리를 직관적으로 설명할 수 있어요</li>
+<li>[x] 학습률(Learning Rate)이 왜 중요한지 알아요</li>
+<li>[x] 로컬 미니멈의 개념과 해결 방법을 알아요</li>
+<li>[x] 역전파(Backpropagation)의 기본 아이디어를 이해해요</li>
+</ul>
+<hr />
+<h2 id="_2">도입: 숫자 맞추기 게임<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<p>여러분, 모르는 문제가 나오면 어떻게 해요? <strong>감으로 찍어요?</strong></p>
+<p>그런데 만약 이런 게임을 한다고 해볼게요:</p>
+<div class="admonition note">
+<p class="admonition-title">숫자 맞추기 게임</p>
+<ol>
+<li>선생님이 <strong>1~100 사이의 숫자</strong> 하나를 생각해요</li>
+<li>여러분이 숫자를 말하면, 선생님은 <strong>"차이(손실)"만</strong> 알려줘요</li>
+<li>정답은 절대 안 알려줘요!</li>
+</ol>
+</div>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">시도</th>
+<th style="text-align: center;">여러분의 답</th>
+<th style="text-align: center;">선생님 피드백</th>
+<th>해석</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">50</td>
+<td style="text-align: center;">"차이: 23"</td>
+<td>꽤 멀구나</td>
+</tr>
+<tr>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">73</td>
+<td style="text-align: center;">"차이: 0"</td>
+<td>맞았다!</td>
+</tr>
+</tbody>
+</table>
+<p>그런데 잠깐, 2번째에 바로 맞추려면 <strong>방향</strong>을 알아야 하잖아요. "23만큼 차이난다"는 것만으로는 위인지 아래인지 모르니까요.</p>
+<p>만약 선생님이 <strong>"23만큼 큰 쪽으로 틀렸어"</strong> 라고 알려준다면? 그러면 50 + 23 = 73으로 바로 갈 수 있어요!</p>
+<p>AI의 학습이 바로 이거예요. <strong>정답은 모르지만, "어느 방향으로 얼마나 고쳐야 하는지"는 알 수 있어요.</strong></p>
+<hr />
+<h2 id="1-ai">개념 1: AI는 정답을 모른다 — 방향만 안다<a class="headerlink" href="#1-ai" title="Permanent link">&para;</a></h2>
+<h3 id="_3">눈 감고 산 내려가기<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<p>이런 상황을 상상해 보세요:</p>
+<blockquote>
+<p>짙은 안개 속에서 산꼭대기에 서 있어요. 앞이 안 보여서 전체 지형은 전혀 모르겠어요. 그런데 <strong>발밑의 기울기</strong>는 느낄 수 있어요. 왼발이 높고 오른발이 낮으면, 오른쪽이 내리막이라는 걸 알 수 있죠.</p>
+</blockquote>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>    ☁️ (안개 — 전체 지형은 안 보여요)
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>        🧑 ← 지금 여기!
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>       ╱    ╲
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>      ╱      ╲        &quot;발밑이 왼쪽으로 기울어져 있으니,
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>     ╱        ╲        왼쪽으로 가면 내려갈 수 있겠다!&quot;
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>    ╱    ⭐    ╲
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>   ╱   최저점   ╲
+</span></code></pre></div>
+<p><strong>전체 지도가 없어도</strong>, 발밑 기울기만으로 <strong>내리막 방향</strong>을 알 수 있어요. 그 방향으로 한 발짝씩 내디디면, 결국 <strong>골짜기(최저점)</strong>에 도달할 수 있어요.</p>
+<div class="key-concept">
+
+**핵심 비유: 안개 속 하산**
+
+- **산의 높이** = 손실(Loss)의 크기
+- **산꼭대기** = 손실이 큰 상태 (학습 초기)
+- **골짜기(최저점)** = 손실이 가장 작은 상태 (학습 목표)
+- **발밑 기울기** = 기울기(Gradient)
+- **한 발짝 내딛기** = 가중치를 조금 수정하기
+
+</div>
+
+<hr />
+<h2 id="2-gradient-descent">개념 2: 경사하강법(Gradient Descent)<a class="headerlink" href="#2-gradient-descent" title="Permanent link">&para;</a></h2>
+<p>이제 정식 이름을 붙여볼게요.</p>
+<ul>
+<li><strong>경사(Gradient)</strong> = 손실이 어느 방향으로 줄어드는지 알려주는 기울기</li>
+<li><strong>하강(Descent)</strong> = 그 방향으로 내려가기</li>
+</ul>
+<p>합치면: <strong>손실이 줄어드는 방향으로 조금씩 이동하는 것</strong> = 경사하강법!</p>
+<h3 id="1">1차원으로 쉽게 이해해요<a class="headerlink" href="#1" title="Permanent link">&para;</a></h3>
+<p>U자 모양의 그릇을 떠올려 보세요. 공을 굴리면 바닥으로 갈 거예요.</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>손실
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a> │
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a> │  ●                         ← 출발! (손실 큼)
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a> │   ╲
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a> │    ●                       ← 기울기 따라 이동
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a> │     ╲
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a> │      ╲
+</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a> │       ●                    ← 계속 이동
+</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a> │        ╲
+</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a> │         ╲  ╱
+</span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a> │          ●╱                ← 도착! (손실 최소)
+</span><span id="__span-1-12"><a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a> │
+</span><span id="__span-1-13"><a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a> ┼────────────────────→ 가중치 값
+</span></code></pre></div>
+<ol>
+<li>현재 위치에서 <strong>기울기를 계산</strong>해요 (왼쪽이 내리막? 오른쪽이 내리막?)</li>
+<li>내리막 방향으로 <strong>한 발짝 이동</strong>해요 (가중치를 수정해요)</li>
+<li>새 위치에서 다시 기울기 계산 → 이동 → 반복!</li>
+<li>기울기가 거의 0이 되면 → <strong>최저점 도착!</strong></li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">한 줄 요약</p>
+<p><strong>경사하강법</strong> = 손실을 줄이는 방향으로 가중치를 조금씩 수정하는 것. 이걸 수백~수만 번 반복하면 AI가 점점 똑똑해져요.</p>
+</div>
+<hr />
+<h2 id="3-learning-rate">개념 3: 학습률(Learning Rate) — 보폭의 크기<a class="headerlink" href="#3-learning-rate" title="Permanent link">&para;</a></h2>
+<p>자, 내리막 방향을 알았으면 <strong>얼마나 크게 한 발짝을 내디딜지</strong> 정해야겠죠? 이게 바로 <strong>학습률(Learning Rate)</strong>이에요.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:3"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><input id="__tabbed_1_3" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">학습률이 너무 클 때 (보폭이 너무 큼)</label><label for="__tabbed_1_2">학습률이 너무 작을 때 (보폭이 너무 작음)</label><label for="__tabbed_1_3">학습률이 적절할 때 (딱 좋은 보폭)</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>손실
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a> │
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a> │  ●─────────────────●     ← 한 발에 너무 멀리 감!
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a> │                  ╱   ╲
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a> │                ╱       ●─────●   ← 왔다 갔다...
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a> │              ╱                 ╲
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a> │            ╱                     ●───→ 발산!
+</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a> │       ⭐╱
+</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a> │     최저점
+</span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a> ┼────────────────────────────→ 가중치
+</span></code></pre></div>
+<p>최저점을 <strong>훌쩍 지나쳐서</strong> 반대편으로 가버려요! 왔다 갔다 하다가 오히려 손실이 커지는 <strong>발산</strong> 현상이 일어나요.</p>
+</div>
+<div class="tabbed-block">
+<div class="language-text highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>손실
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a> │
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a> │  ●
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a> │  ●               ← 한 발짝이 너무 작아서...
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a> │  ●
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a> │   ●
+</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a> │   ●              ← 수업 끝날 때까지 도착 못해요
+</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a> │   ●
+</span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a> │    ●
+</span><span id="__span-3-10"><a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a> │          ⭐
+</span><span id="__span-3-11"><a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a> │        최저점
+</span><span id="__span-3-12"><a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a> ┼────────────────────→ 가중치
+</span></code></pre></div>
+<p>한 발짝이 너무 작아서 <strong>학습이 엄청 느려요</strong>. 시간이 한참 걸려도 최저점에 도달하지 못해요.</p>
+</div>
+<div class="tabbed-block">
+<div class="language-text highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>손실
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a> │
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a> │  ●
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a> │    ╲
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a> │      ●
+</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a> │        ╲
+</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a> │          ●
+</span><span id="__span-4-8"><a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a> │           ╲
+</span><span id="__span-4-9"><a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a> │            ●⭐     ← 적당한 속도로 도착!
+</span><span id="__span-4-10"><a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a> │          최저점
+</span><span id="__span-4-11"><a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a> ┼────────────────────→ 가중치
+</span></code></pre></div>
+<p>빠르면서도 정확하게 최저점에 도달해요!</p>
+</div>
+</div>
+</div>
+<div class="key-concept">
+
+**학습률 정리**
+
+| 학습률 | 보폭 | 결과 |
+|:------:|:----:|------|
+| **너무 크다** | 너무 큼 | 최저점을 지나쳐서 발산 |
+| **너무 작다** | 너무 작음 | 수렴은 하지만 너무 느림 |
+| **적절하다** | 딱 좋음 | 빠르고 정확하게 수렴 |
+
+</div>
+
+<div class="admonition warning">
+<p class="admonition-title">학습률 설정, 쉽지 않아요</p>
+<p>"적절한" 학습률은 문제마다 달라요. 보통 0.001 ~ 0.01 사이에서 시작하지만, 실험을 통해 찾아야 해요. AI 개발에서 가장 중요한 <strong>하이퍼파라미터</strong> 중 하나예요.</p>
+</div>
+<hr />
+<h2 id="4">개념 4: 함정 — 로컬 미니멈(지역 최솟값)<a class="headerlink" href="#4" title="Permanent link">&para;</a></h2>
+<h3 id="w">W자 지형: 가짜 골짜기에 빠질 수 있다!<a class="headerlink" href="#w" title="Permanent link">&para;</a></h3>
+<p>실제 손실 함수의 지형은 깔끔한 U자가 아니에요. 울퉁불퉁한 <strong>W자</strong>(또는 더 복잡한 모양)일 수 있어요.</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>손실
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a> │
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a> │  ●
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a> │   ╲
+</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a> │    ╲       ╱╲
+</span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a> │     ╲     ╱  ╲
+</span><span id="__span-5-7"><a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a> │      ╲   ╱    ╲
+</span><span id="__span-5-8"><a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a> │       ╲ ╱      ╲
+</span><span id="__span-5-9"><a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a> │        ●        ╲         ╱
+</span><span id="__span-5-10"><a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a> │    가짜 골짜기     ╲       ╱
+</span><span id="__span-5-11"><a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a> │   (로컬 미니멈)     ╲     ╱
+</span><span id="__span-5-12"><a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a> │                      ╲   ╱
+</span><span id="__span-5-13"><a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a> │                       ╲ ╱
+</span><span id="__span-5-14"><a id="__codelineno-5-14" name="__codelineno-5-14" href="#__codelineno-5-14"></a> │                        ⭐
+</span><span id="__span-5-15"><a id="__codelineno-5-15" name="__codelineno-5-15" href="#__codelineno-5-15"></a> │                   진짜 최저점
+</span><span id="__span-5-16"><a id="__codelineno-5-16" name="__codelineno-5-16" href="#__codelineno-5-16"></a> │                 (글로벌 미니멈)
+</span><span id="__span-5-17"><a id="__codelineno-5-17" name="__codelineno-5-17" href="#__codelineno-5-17"></a> ┼──────────────────────────────→ 가중치
+</span></code></pre></div>
+<p>경사하강법을 쓰면, <strong>가짜 골짜기(로컬 미니멈)</strong>에 빠질 수 있어요. 거기서는 기울기가 0이니까, AI가 "도착했다!"고 착각해요. 하지만 더 깊은 <strong>진짜 최저점(글로벌 미니멈)</strong>이 있을 수 있어요!</p>
+<h3 id="_4">해결 방법들<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:3"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><input id="__tabbed_2_3" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">모멘텀(Momentum) — 관성 이용</label><label for="__tabbed_2_2">여러 출발점에서 시도</label><label for="__tabbed_2_3">학습률 변화</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>공이 내리막을 굴러갈 때 <strong>속도</strong>가 붙잖아요? 그 관성 덕분에 작은 언덕은 넘어갈 수 있어요.</p>
+<p>AI에게도 "이전에 움직이던 방향의 힘"을 기억하게 해서, 작은 가짜 골짜기는 통과하게 만들어요.</p>
+</div>
+<div class="tabbed-block">
+<p>다른 위치(초기 가중치)에서 여러 번 출발하면, 가짜 골짜기에 빠지지 않는 경로를 찾을 확률이 높아져요.</p>
+</div>
+<div class="tabbed-block">
+<p>처음에는 큰 보폭으로 대략적인 위치를 찾고, 나중에는 작은 보폭으로 정밀하게 찾아요. 마치 처음엔 뛰다가 나중엔 살금살금 걷는 것처럼요.</p>
+</div>
+</div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">더 알아보기: Adam 옵티마이저</p>
+<p>실제로 많이 쓰이는 <strong>Adam</strong>이라는 방법은, 모멘텀 + 학습률 자동 조절을 합친 것이에요. "방향도 잘 잡고, 보폭도 알아서 조절하는" 똑똑한 하산 전략이라고 생각하면 돼요. 현재 대부분의 딥러닝 학습에서 Adam을 사용해요.</p>
+</div>
+<hr />
+<h2 id="5-backpropagation">개념 5: 역전파(Backpropagation) — 간략히<a class="headerlink" href="#5-backpropagation" title="Permanent link">&para;</a></h2>
+<h3 id="_5">오답 분석의 원리<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<p>시험에서 최종 답이 틀렸다고 해볼게요. 여러분은 어떻게 하나요?</p>
+<blockquote>
+<p>"어디서부터 틀렸지?" → 풀이 과정을 <strong>거꾸로 추적</strong>하잖아요!</p>
+</blockquote>
+<p>AI도 똑같아요.</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>입력 → [1층] → [2층] → [3층] → 출력 → 손실 계산!
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>                                          │
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>  &quot;1층, 너 책임 15%&quot;  ←  &quot;2층, 너 책임 30%&quot;  ←  &quot;3층, 너 책임 55%&quot;
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>                    ← ← ← 역전파 (거꾸로!) ← ← ←
+</span></code></pre></div>
+<ol>
+<li><strong>출력</strong>에서 손실을 계산해요</li>
+<li><strong>거꾸로</strong> 올라가면서, 각 층의 가중치가 얼마나 손실에 기여했는지 계산해요</li>
+<li>기여한 만큼 <strong>책임을 분배</strong>해요</li>
+<li>각 가중치를 책임만큼 수정해요</li>
+</ol>
+<div class="key-concept">
+
+**역전파(Backpropagation)란?**
+
+출력에서 입력 방향으로 거꾸로 올라가며, 각 가중치가 손실에 얼마나 기여했는지 계산하고, 그만큼 수정하는 방법이에요. "오답 분석을 거꾸로 해서 실수한 곳을 찾는 것"과 같아요.
+
+</div>
+
+<div class="admonition tip">
+<p class="admonition-title">왜 '역'전파인가요?</p>
+<p>보통 신경망은 입력 → 출력 순서로 계산해요 (순전파, Forward). 역전파는 그 반대 방향, 출력 → 입력으로 돌아가며 기울기를 전달해요. 그래서 <strong>역(Back)</strong>전파라고 불러요.</p>
+</div>
+<hr />
+<h2 id="_6">실습 안내<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
+<h3 id="1-3d">실습 1: 경사하강법 3D 체험<a class="headerlink" href="#1-3d" title="Permanent link">&para;</a></h3>
+<p><a href="https://github.com/lilipads/gradient_descent_viz">Gradient Descent 3D 시각화</a> 또는 선생님이 준비한 시뮬레이터를 사용해요.</p>
+<ol>
+<li><strong>학습률을 조절</strong>하면서 최저점을 찾아보세요</li>
+<li>학습률을 너무 크게 하면? → 최저점을 지나쳐요!</li>
+<li>로컬 미니멈에 빠져보세요 → 어떻게 탈출할 수 있을까?</li>
+</ol>
+<h3 id="2-tensorflow-playground">실습 2: TensorFlow Playground에서 학습률 실험<a class="headerlink" href="#2-tensorflow-playground" title="Permanent link">&para;</a></h3>
+<p><a href="https://playground.tensorflow.org">TensorFlow Playground</a>에 접속해서 학습률을 바꿔보세요!</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">학습률</th>
+<th>설정 후 관찰 포인트</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><strong>0.001</strong></td>
+<td>Loss가 줄어들긴 하는데... 느리죠?</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>0.03</strong></td>
+<td>적당한 속도로 줄어들어요</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>0.1</strong></td>
+<td>꽤 빠르게 줄어들어요</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>1</strong></td>
+<td>어라? 좀 불안정해지지 않나요?</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>10</strong></td>
+<td>Loss가 줄어들지 않거나 오히려 커져요!</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">스크린샷 비교 활동</p>
+<p>각 학습률로 <strong>같은 횟수(예: 500 에포크)</strong>만큼 학습한 후, Loss 값과 결과 화면을 스크린샷으로 찍어서 비교해 봐요. 가장 좋은 결과를 낸 학습률은 몇이었나요?</p>
+</div>
+<h3 id="3">실습 3: 등고선 활동지 (종이 활동)<a class="headerlink" href="#3" title="Permanent link">&para;</a></h3>
+<p>선생님이 나눠주는 <strong>등고선 지도</strong> 활동지를 사용해요.</p>
+<ol>
+<li>등고선 지도 위의 <strong>출발점</strong>에 연필을 놓아요</li>
+<li>현재 위치에서 <strong>가장 가파른 내리막 방향</strong>으로 화살표를 그려요</li>
+<li>화살표 끝에서 다시 방향을 정해요</li>
+<li>최저점에 도달할 때까지 반복!</li>
+</ol>
+<div class="tabbed-set tabbed-alternate" data-tabs="3:3"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><input id="__tabbed_3_3" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">보폭 크게 (학습률 높음)</label><label for="__tabbed_3_2">보폭 작게 (학습률 낮음)</label><label for="__tabbed_3_3">W자 지형에서</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>화살표를 <strong>길게</strong> 그려보세요. 최저점을 지나치나요?</p>
+</div>
+<div class="tabbed-block">
+<p>화살표를 <strong>짧게</strong> 그려보세요. 몇 번 만에 도착하나요?</p>
+</div>
+<div class="tabbed-block">
+<p>가짜 골짜기가 있는 지도에서 해보세요. 로컬 미니멈에 빠지나요?</p>
+</div>
+</div>
+</div>
+<details class="success">
+<summary>이 활동의 핵심 깨달음</summary>
+<p>경사하강법은 결국 "가장 가파른 내리막 방향으로 한 발짝 이동"을 반복하는 것이에요. 보폭(학습률)에 따라 결과가 완전히 달라진다는 걸 직접 느껴보는 활동이에요.</p>
+</details>
+<hr />
+<h2 id="_7">자주 하는 오해<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
+<details class="success">
+<summary>오해 1: AI가 정답을 보고 외우는 거 아니에요?</summary>
+<p><strong>아니에요!</strong> AI는 정답을 보긴 하지만 외우는 게 아니에요. 정답과 예측의 <strong>차이(손실)</strong>를 계산하고, 그 차이를 줄이는 <strong>방향</strong>으로 가중치를 조금씩 고쳐요. 수학 문제의 답을 외우는 게 아니라, <strong>풀이 방법을 개선</strong>하는 거예요.</p>
+</details>
+<details class="success">
+<summary>오해 2: 경사하강법은 항상 최적의 답을 찾나요?</summary>
+<p><strong>아니에요!</strong> 로컬 미니멈에 빠질 수 있고, 학습률이 잘못되면 발산할 수도 있어요. 그래서 모멘텀, Adam 같은 개선된 방법들이 계속 연구되고 있어요.</p>
+</details>
+<details class="success">
+<summary>오해 3: 학습률은 한 번 정하면 끝인가요?</summary>
+<p><strong>꼭 그렇지는 않아요!</strong> 학습률을 학습 도중에 점점 줄이는 <strong>학습률 스케줄링</strong>이라는 기법도 있어요. 처음에는 크게 움직여서 대략적인 위치를 찾고, 나중에는 작게 움직여서 정밀하게 찾는 전략이에요.</p>
+</details>
+<hr />
+<h2 id="_8">정리<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>핵심 용어</th>
+<th>의미</th>
+<th>비유</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>경사하강법</strong></td>
+<td>손실을 줄이는 방향으로 가중치를 조금씩 수정하는 방법</td>
+<td>안개 속에서 발밑 기울기만 느끼며 산 내려가기</td>
+</tr>
+<tr>
+<td><strong>기울기(Gradient)</strong></td>
+<td>손실이 줄어드는 방향과 크기</td>
+<td>발밑의 경사</td>
+</tr>
+<tr>
+<td><strong>학습률</strong></td>
+<td>한 번에 얼마나 이동할지 결정하는 값</td>
+<td>한 발짝의 보폭</td>
+</tr>
+<tr>
+<td><strong>로컬 미니멈</strong></td>
+<td>진짜 최저점이 아닌 가짜 골짜기</td>
+<td>W자 지형의 얕은 골짜기</td>
+</tr>
+<tr>
+<td><strong>역전파</strong></td>
+<td>출력→입력 방향으로 각 가중치의 책임을 분배하는 방법</td>
+<td>시험 오답을 거꾸로 추적하는 것</td>
+</tr>
+</tbody>
+</table>
+<div class="key-concept">
+
+**오늘의 핵심 한 줄**
+
+기울기 방향으로 조금씩 이동. 보폭이 너무 크면 발산, 너무 작으면 수렴 못한다.
+
+</div>
+
+<hr />
+<div class="admonition quote">
+<p class="admonition-title">다음 시간 예고</p>
+<p><strong>8차시: 단어의 순서를 기억하라</strong> — AI가 문장의 맥락을 이해하는 비밀, <strong>Attention</strong>과 <strong>Transformer</strong>의 세계로 들어갈 거예요!</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  맨위로
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="하단/푸터" >
+        
+          
+          <a href="../ch6-loss/" class="md-footer__link md-footer__link--prev" aria-label="이전: 6. 잘했는지 못했는지, 어떻게 알지?">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                이전
+              </span>
+              <div class="md-ellipsis">
+                6. 잘했는지 못했는지, 어떻게 알지?
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../../section3/ch8-attention/" class="md-footer__link md-footer__link--next" aria-label="다음: 8. AI는 어디를 집중해서 볼까?">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                다음
+              </span>
+              <div class="md-ellipsis">
+                8. AI는 어디를 집중해서 볼까?
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["content.code.copy", "content.code.annotate", "navigation.instant", "navigation.tabs", "navigation.top", "navigation.footer", "navigation.sections", "toc.integrate"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\ud074\ub9bd\ubcf4\ub4dc\uc5d0 \ubcf5\uc0ac\ub428", "clipboard.copy": "\ud074\ub9bd\ubcf4\ub4dc\ub85c \ubcf5\uc0ac", "search.result.more.one": "\uc774 \ubb38\uc11c\uc5d0\uc11c 1\uac1c\uc758 \uac80\uc0c9 \uacb0\uacfc \ub354 \ubcf4\uae30", "search.result.more.other": "\uc774 \ubb38\uc11c\uc5d0\uc11c #\uac1c\uc758 \uac80\uc0c9 \uacb0\uacfc \ub354 \ubcf4\uae30", "search.result.none": "\uac80\uc0c9\uc5b4\uc640 \uc77c\uce58\ud558\ub294 \ubb38\uc11c\uac00 \uc5c6\uc2b5\ub2c8\ub2e4", "search.result.one": "1\uac1c\uc758 \uc77c\uce58\ud558\ub294 \ubb38\uc11c", "search.result.other": "#\uac1c\uc758 \uc77c\uce58\ud558\ub294 \ubb38\uc11c", "search.result.placeholder": "\uac80\uc0c9\uc5b4\ub97c \uc785\ub825\ud558\uc138\uc694", "search.result.term.missing": "\ud3ec\ud568\ub418\uc9c0 \uc54a\uc740 \uac80\uc0c9\uc5b4", "select.version": "\ubc84\uc804 \uc120\ud0dd"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

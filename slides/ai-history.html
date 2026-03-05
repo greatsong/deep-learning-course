@@ -1,0 +1,814 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI, 70년의 꿈 — AI의 역사</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/theme/white.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
+  <style>
+    /* ─── 기본 설정 ─── */
+    .reveal {
+      font-family: 'Noto Sans KR', system-ui, sans-serif;
+      font-size: 32px;
+    }
+    .reveal h1, .reveal h2, .reveal h3, .reveal h4 {
+      text-transform: none !important;
+      font-family: 'Noto Sans KR', system-ui, sans-serif;
+    }
+    .reveal h1 { font-size: 1.8em; font-weight: 900; }
+    .reveal h2 { font-size: 1.4em; font-weight: 700; }
+    .reveal h3 { font-size: 1.15em; font-weight: 600; }
+    .reveal p { line-height: 1.6; font-size: 0.9em; }
+    .reveal ul, .reveal ol { text-align: left; font-size: 0.9em; }
+    .reveal li { margin-bottom: 0.3em; line-height: 1.5; }
+    .reveal blockquote {
+      border-left: 4px solid;
+      padding: 0.5em 1em;
+      border-radius: 0 8px 8px 0;
+      font-style: normal;
+    }
+
+    /* ─── 타이틀 슬라이드 ─── */
+    .title-slide {
+      text-align: center;
+    }
+    .title-slide h1 {
+      font-size: 2.2em !important;
+      font-weight: 900 !important;
+      letter-spacing: -0.02em;
+    }
+    .subtitle {
+      font-size: 1.1em;
+      opacity: 0.7;
+      font-weight: 400;
+    }
+
+    /* ─── 연도 배지 ─── */
+    .year-badge {
+      display: inline-block;
+      font-size: 2.5em;
+      font-weight: 900;
+      letter-spacing: -0.03em;
+      margin-bottom: 0.1em;
+    }
+
+    /* ─── 시대별 색상 ─── */
+    /* 태동기 (1950s) — 깊은 남색 */
+    .era-dawn .year-badge { color: #1a237e; }
+    .era-dawn h2 { color: #1a237e !important; }
+    .era-dawn .impact { border-left-color: #1a237e; background: #e8eaf6; }
+
+    /* 초창기 (1956-1966) — 진한 파랑 */
+    .era-birth .year-badge { color: #0d47a1; }
+    .era-birth h2 { color: #0d47a1 !important; }
+    .era-birth .impact { border-left-color: #0d47a1; background: #e3f2fd; }
+
+    /* AI 겨울 (1969-1986) — 차가운 회색/청색 */
+    .era-winter .year-badge { color: #455a64; }
+    .era-winter h2 { color: #455a64 !important; }
+    .era-winter .impact { border-left-color: #455a64; background: #eceff1; }
+
+    /* 해빙기 (1986-2009) — 따뜻한 주황 */
+    .era-thaw .year-badge { color: #e65100; }
+    .era-thaw h2 { color: #e65100 !important; }
+    .era-thaw .impact { border-left-color: #e65100; background: #fff3e0; }
+
+    /* AI 봄 (2012-2016) — 선명한 초록 */
+    .era-spring .year-badge { color: #2e7d32; }
+    .era-spring h2 { color: #2e7d32 !important; }
+    .era-spring .impact { border-left-color: #2e7d32; background: #e8f5e9; }
+
+    /* AI 여름 (2017-2022) — 밝은 보라/핑크 */
+    .era-summer .year-badge { color: #7b1fa2; }
+    .era-summer h2 { color: #7b1fa2 !important; }
+    .era-summer .impact { border-left-color: #7b1fa2; background: #f3e5f5; }
+
+    /* AI 현재 (2024-2025) — 빛나는 금색/주황 */
+    .era-now .year-badge { color: #f57f17; }
+    .era-now h2 { color: #f57f17 !important; }
+    .era-now .impact { border-left-color: #f57f17; background: #fffde7; }
+
+    /* ─── 임팩트 박스 ─── */
+    .impact {
+      border-left: 4px solid;
+      padding: 0.8rem 1.2rem;
+      border-radius: 0 8px 8px 0;
+      margin: 0.8rem auto;
+      text-align: left;
+      max-width: 85%;
+      font-size: 0.85em;
+    }
+    .impact strong {
+      font-size: 1.05em;
+    }
+
+    /* ─── 인용/질문 박스 ─── */
+    .quote-box {
+      background: rgba(0,0,0,0.04);
+      border-radius: 12px;
+      padding: 1rem 1.5rem;
+      margin: 0.8rem auto;
+      max-width: 85%;
+      font-style: italic;
+      font-size: 1.1em;
+      line-height: 1.5;
+    }
+
+    /* ─── 타임라인 구분 슬라이드 ─── */
+    .era-divider {
+      text-align: center;
+    }
+    .era-divider h1 {
+      font-size: 2em !important;
+    }
+    .era-divider .era-icon {
+      font-size: 4em;
+      line-height: 1.2;
+      margin-bottom: 0.2em;
+    }
+    .era-divider .era-years {
+      font-size: 1.4em;
+      font-weight: 300;
+      opacity: 0.6;
+    }
+
+    /* ─── GPT 진화 타임라인 ─── */
+    .gpt-timeline {
+      display: flex;
+      justify-content: center;
+      gap: 0.8rem;
+      flex-wrap: wrap;
+      margin: 1rem 0;
+    }
+    .gpt-card {
+      background: white;
+      border-radius: 12px;
+      padding: 0.8rem 1rem;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+      text-align: center;
+      min-width: 130px;
+      border-top: 3px solid;
+    }
+    .gpt-card .gpt-name {
+      font-weight: 700;
+      font-size: 1em;
+      margin-bottom: 0.2em;
+    }
+    .gpt-card .gpt-params {
+      font-size: 0.7em;
+      opacity: 0.6;
+    }
+    .gpt-card:nth-child(1) { border-color: #90a4ae; }
+    .gpt-card:nth-child(2) { border-color: #42a5f5; }
+    .gpt-card:nth-child(3) { border-color: #7e57c2; }
+    .gpt-card:nth-child(4) { border-color: #ec407a; }
+
+    /* ─── 겨울 vs 봄 비교 ─── */
+    .compare-row {
+      display: flex;
+      gap: 1.5rem;
+      justify-content: center;
+      margin: 1rem 0;
+    }
+    .compare-card {
+      flex: 1;
+      max-width: 45%;
+      border-radius: 12px;
+      padding: 1.2rem 1.5rem;
+      text-align: center;
+    }
+    .compare-winter {
+      background: linear-gradient(135deg, #37474f, #546e7a);
+      color: #eceff1;
+    }
+    .compare-winter h3 { color: #b0bec5 !important; }
+    .compare-spring {
+      background: linear-gradient(135deg, #2e7d32, #43a047);
+      color: #e8f5e9;
+    }
+    .compare-spring h3 { color: #c8e6c9 !important; }
+
+    /* ─── 강조 텍스트 ─── */
+    .highlight-text {
+      font-size: 1.3em;
+      font-weight: 700;
+      line-height: 1.6;
+      text-align: center;
+      margin: 1rem 0;
+    }
+
+    /* ─── 마무리 슬라이드 ─── */
+    .closing-slide {
+      text-align: center;
+    }
+    .closing-slide h2 {
+      font-size: 1.6em !important;
+      line-height: 1.4;
+    }
+
+    /* ─── 반응형 ─── */
+    @media (max-width: 700px) {
+      .compare-row { flex-direction: column; align-items: center; }
+      .compare-card { max-width: 90%; }
+      .gpt-timeline { flex-direction: column; align-items: center; }
+    }
+
+    /* ─── 프린트 ─── */
+    @media print {
+      .reveal pre { box-shadow: none !important; border: 1px solid #ddd; }
+    }
+  </style>
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+      <!-- ===== 1. 타이틀 ===== -->
+      <section data-background-gradient="linear-gradient(135deg, #0d47a1 0%, #7b1fa2 50%, #f57f17 100%)">
+        <div class="title-slide">
+          <h1 style="color: white !important;">AI, 70년의 꿈</h1>
+          <p style="color: rgba(255,255,255,0.85); font-size: 1.2em;">
+            기계는 생각할 수 있는가?<br>
+            <span style="font-weight: 300;">1950년부터 2025년까지, 인공지능의 역사</span>
+          </p>
+          <br>
+          <p style="color: rgba(255,255,255,0.5); font-size: 0.7em;">고등학교 2학년 | 딥러닝 기초 과정</p>
+        </div>
+        <aside class="notes">
+          도입 슬라이드입니다. "기계가 생각할 수 있을까?"라는 질문을 학생들에게 던지며 시작하세요.
+          손 들어보기: "AI가 사람보다 똑똑하다고 생각하는 사람?"
+        </aside>
+      </section>
+
+      <!-- ===== 2. 왜 역사를 배우는가 ===== -->
+      <section>
+        <h2>왜 AI의 역사를 알아야 할까?</h2>
+        <br>
+        <ul>
+          <li class="fragment"><strong>지금의 AI</strong>는 하루아침에 만들어지지 않았다</li>
+          <li class="fragment">70년간의 <strong>실패와 부활</strong>이 반복된 드라마</li>
+          <li class="fragment">역사를 알면 <strong>다음에 무엇이 올지</strong> 예측할 수 있다</li>
+        </ul>
+        <br>
+        <p class="fragment" style="text-align:center; margin-top:1em; font-weight:600; color:#7b1fa2;">
+          AI의 역사 = 인간이 "생각"을 이해하려는 여정
+        </p>
+        <aside class="notes">
+          학생들에게 "ChatGPT가 갑자기 나온 게 아니라, 70년의 연구가 있었다"는 점을 강조하세요.
+        </aside>
+      </section>
+
+      <!-- ===== 3. 시대 구분 개요 ===== -->
+      <section>
+        <h2>AI 역사의 큰 흐름</h2>
+        <br>
+        <div style="text-align:center; font-size:0.85em; line-height:2.2;">
+          <span style="display:inline-block; padding:0.3em 0.8em; border-radius:20px; background:#1a237e; color:white; font-weight:600;">1950 태동</span>
+          <span style="opacity:0.4;"> &rarr; </span>
+          <span style="display:inline-block; padding:0.3em 0.8em; border-radius:20px; background:#0d47a1; color:white; font-weight:600;">1956 탄생</span>
+          <span style="opacity:0.4;"> &rarr; </span>
+          <span style="display:inline-block; padding:0.3em 0.8em; border-radius:20px; background:#455a64; color:white; font-weight:600;">1969 겨울</span>
+          <span style="opacity:0.4;"> &rarr; </span>
+          <span style="display:inline-block; padding:0.3em 0.8em; border-radius:20px; background:#e65100; color:white; font-weight:600;">1986 해빙</span>
+          <span style="opacity:0.4;"> &rarr; </span>
+          <span style="display:inline-block; padding:0.3em 0.8em; border-radius:20px; background:#2e7d32; color:white; font-weight:600;">2012 봄</span>
+          <span style="opacity:0.4;"> &rarr; </span>
+          <span style="display:inline-block; padding:0.3em 0.8em; border-radius:20px; background:#7b1fa2; color:white; font-weight:600;">2017 여름</span>
+          <span style="opacity:0.4;"> &rarr; </span>
+          <span style="display:inline-block; padding:0.3em 0.8em; border-radius:20px; background:#f57f17; color:white; font-weight:600;">2024 지금</span>
+        </div>
+        <br>
+        <p class="fragment" style="text-align:center; opacity:0.6; font-size:0.8em;">
+          색이 어두울수록 AI의 겨울, 밝을수록 AI의 봄
+        </p>
+        <aside class="notes">
+          전체 흐름을 먼저 보여주고, 하나씩 들어갑니다.
+          "겨울"과 "봄"이라는 비유를 미리 설명해주세요.
+        </aside>
+      </section>
+
+      <!-- ===== 4. 1950 — 앨런 튜링 ===== -->
+      <section class="era-dawn">
+        <!-- IMAGE: 앨런 튜링 초상 또는 튜링 테스트 다이어그램 -->
+        <div class="year-badge">1950</div>
+        <h2>앨런 튜링 — "기계가 생각할 수 있는가?"</h2>
+        <br>
+        <div class="quote-box">
+          "Computing Machinery and Intelligence" 논문에서<br>
+          <strong>튜링 테스트</strong>를 제안하다
+        </div>
+        <p class="fragment" style="text-align:center;">
+          사람과 대화해서 구별할 수 없다면, 그 기계는 "생각한다"고 할 수 있는가?
+        </p>
+        <div class="impact fragment">
+          <strong>왜 중요한가:</strong> 모든 AI 연구의 출발점. "지능이란 무엇인가"라는 질문을 처음으로 과학의 영역에 놓았다.
+        </div>
+        <aside class="notes">
+          튜링은 2차 세계대전에서 에니그마 암호를 해독한 인물이기도 합니다.
+          "컴퓨터 과학의 아버지"라고 불립니다.
+        </aside>
+      </section>
+
+      <!-- ===== 5. 1956 — 다트머스 회의 ===== -->
+      <section class="era-birth">
+        <!-- IMAGE: 다트머스 대학교 또는 1956년 회의 참석자들 -->
+        <div class="year-badge">1956</div>
+        <h2>다트머스 회의 — "인공지능"의 탄생</h2>
+        <br>
+        <p>
+          존 매카시, 마빈 민스키, 클로드 섀넌 등이<br>
+          <strong>6주간의 여름 워크숍</strong>에 모였다
+        </p>
+        <div class="quote-box fragment">
+          "학습의 모든 측면, 지능의 모든 특성을<br>
+          기계로 시뮬레이션할 수 있다"
+        </div>
+        <div class="impact fragment">
+          <strong>왜 중요한가:</strong> <em>"Artificial Intelligence"</em>라는 단어가 처음 탄생한 순간. AI라는 학문 분야가 공식적으로 시작되었다.
+        </div>
+        <aside class="notes">
+          참석자가 고작 10여 명이었지만, 그들이 AI 분야 전체를 만들었습니다.
+          "이름이 생기면 분야가 된다"는 점을 강조하세요.
+        </aside>
+      </section>
+
+      <!-- ===== 6. 1957 — 퍼셉트론 ===== -->
+      <section class="era-birth">
+        <!-- IMAGE: 프랭크 로젠블랫과 Mark I 퍼셉트론 기계 사진 -->
+        <div class="year-badge">1957</div>
+        <h2>퍼셉트론 — 최초의 신경망 기계</h2>
+        <br>
+        <p>
+          프랭크 로젠블랫이 <strong>Mark I Perceptron</strong>을 만들다<br>
+          <span style="opacity:0.7;">인간의 뇌 신경세포를 흉내 낸 최초의 기계</span>
+        </p>
+        <div class="quote-box fragment" style="background:rgba(13,71,161,0.08);">
+          뉴욕타임스 1958년 보도:<br>
+          <strong>"해군, '생각하는 기계'의 탄생을 밝히다"</strong>
+        </div>
+        <div class="impact fragment">
+          <strong>왜 중요한가:</strong> 오늘날 딥러닝의 가장 오래된 조상. 기계가 데이터에서 "스스로 배울 수 있다"는 가능성을 처음 보여주었다.
+        </div>
+        <aside class="notes">
+          퍼셉트론은 간단한 패턴(AND, OR)은 학습할 수 있었습니다.
+          이후 슬라이드에서 한계를 다룰 예정입니다.
+        </aside>
+      </section>
+
+      <!-- ===== 7. 1966 — ELIZA ===== -->
+      <section class="era-birth">
+        <!-- IMAGE: ELIZA 대화 화면 캡처 -->
+        <div class="year-badge">1966</div>
+        <h2>ELIZA — 최초의 챗봇</h2>
+        <br>
+        <p>
+          MIT의 조셉 바이젠바움이 만든 <strong>심리 상담 챗봇</strong>
+        </p>
+        <div style="background:#f5f5f5; border-radius:12px; padding:1rem 1.5rem; margin:0.8rem auto; max-width:80%; font-family:monospace; font-size:0.75em; text-align:left;">
+          <p><strong>사용자:</strong> 남자친구가 여기 오라고 했어요</p>
+          <p><strong>ELIZA:</strong> 남자친구가 여기 오라고 했다니, 더 말해보세요</p>
+          <p><strong>사용자:</strong> 우울해요</p>
+          <p><strong>ELIZA:</strong> 우울하다니 유감이네요. 왜 우울한가요?</p>
+        </div>
+        <div class="impact fragment">
+          <strong>왜 중요한가:</strong> 단순한 패턴 매칭인데도, 사람들이 진짜 상담사라고 믿었다. "사람은 기계에게 쉽게 감정을 투영한다"는 발견.
+        </div>
+        <aside class="notes">
+          ELIZA 효과: 사람들은 기계에 인간의 감정을 투사하는 경향이 있습니다.
+          ChatGPT와의 유사점/차이점을 물어보세요.
+        </aside>
+      </section>
+
+      <!-- ===== 8. AI 겨울 구분 슬라이드 ===== -->
+      <section data-background-gradient="linear-gradient(135deg, #263238, #37474f, #455a64)">
+        <div class="era-divider">
+          <div class="era-icon" style="filter: grayscale(0.5);">&#10052;&#65039;</div>
+          <h1 style="color: #b0bec5 !important;">AI의 겨울</h1>
+          <div class="era-years" style="color: #78909c;">1969 ~ 1986</div>
+          <p style="color: #90a4ae; margin-top:1em; font-size:0.85em;">
+            꿈은 너무 컸고, 현실은 냉혹했다
+          </p>
+        </div>
+        <aside class="notes">
+          분위기 전환 슬라이드입니다. 어두운 배경으로 "겨울"의 느낌을 줍니다.
+          "AI 겨울은 사실 두 번 있었다"고 언급하세요.
+        </aside>
+      </section>
+
+      <!-- ===== 9. 1969 — 민스키의 비판 ===== -->
+      <section class="era-winter">
+        <!-- IMAGE: 마빈 민스키 또는 XOR 문제 다이어그램 -->
+        <div class="year-badge">1969</div>
+        <h2>민스키의 비판 — 퍼셉트론의 한계</h2>
+        <br>
+        <p>
+          마빈 민스키 &amp; 시모어 페이퍼트가<br>
+          &laquo;Perceptrons&raquo; 책에서 <strong>XOR 문제</strong>를 수학적으로 증명
+        </p>
+        <p class="fragment" style="text-align:center; margin:0.8em 0;">
+          퍼셉트론은 단순한 문제(XOR)조차 풀 수 없다!<br>
+          <span style="font-size:0.8em; opacity:0.6;">&#8594; 신경망 연구 예산이 대폭 삭감</span>
+        </p>
+        <div class="impact fragment">
+          <strong>왜 중요한가:</strong> 1차 AI 겨울의 방아쇠. 한 권의 책이 신경망 연구를 거의 20년간 얼려버렸다.
+        </div>
+        <aside class="notes">
+          XOR 문제를 칠판에 간단히 그려서 보여주면 좋습니다.
+          "한 층으로는 안 되지만, 여러 층이면 된다"는 복선을 깔아두세요.
+        </aside>
+      </section>
+
+      <!-- ===== 10. AI 겨울 두 번 ===== -->
+      <section class="era-winter">
+        <h2>AI 겨울은 두 번 찾아왔다</h2>
+        <br>
+        <div class="compare-row">
+          <div class="compare-card compare-winter">
+            <h3>1차 겨울 (1969~1980)</h3>
+            <p style="font-size:0.75em; margin-top:0.5em;">
+              퍼셉트론의 한계 증명<br>
+              신경망 연구 예산 전면 삭감<br>
+              "AI는 사기"라는 여론
+            </p>
+          </div>
+          <div class="compare-card compare-winter">
+            <h3>2차 겨울 (1987~1993)</h3>
+            <p style="font-size:0.75em; margin-top:0.5em;">
+              전문가 시스템의 실패<br>
+              일본 5세대 컴퓨터 프로젝트 중단<br>
+              AI 기업 줄도산
+            </p>
+          </div>
+        </div>
+        <p class="fragment" style="text-align:center; font-size:0.85em; color:#455a64; font-weight:600;">
+          하지만 겨울에도... 묵묵히 연구를 계속한 사람들이 있었다
+        </p>
+        <aside class="notes">
+          겨울이 두 번이나 있었지만, 포기하지 않은 연구자들 덕분에 AI가 살아남았습니다.
+          "힌튼"이라는 이름을 여기서 슬쩍 언급해도 좋습니다.
+        </aside>
+      </section>
+
+      <!-- ===== 11. 1986 — 역전파 ===== -->
+      <section class="era-thaw">
+        <!-- IMAGE: 다층 신경망 구조도 -->
+        <div class="year-badge">1986</div>
+        <h2>역전파 알고리즘 — 겨울을 녹이다</h2>
+        <br>
+        <p>
+          <strong>제프리 힌튼</strong>, 루멜하트, 윌리엄스가<br>
+          다층 신경망의 학습법을 제시
+        </p>
+        <p class="fragment" style="text-align:center; font-size:0.95em; margin:0.8em 0;">
+          핵심 아이디어: <strong>"틀린 만큼 되돌아가며 고쳐라"</strong><br>
+          <span style="font-size:0.8em; opacity:0.6;">오차를 뒤에서 앞으로 전파 (Back Propagation)</span>
+        </p>
+        <div class="impact fragment">
+          <strong>왜 중요한가:</strong> 민스키가 지적한 한계를 정면 돌파. "층을 쌓으면 XOR도 풀 수 있다!" 오늘날 모든 딥러닝의 핵심 알고리즘.
+        </div>
+        <aside class="notes">
+          역전파를 "시험 오답노트"에 비유하면 학생들이 이해하기 쉽습니다.
+          "틀린 문제를 분석해서 다음에 안 틀리게 하는 것"
+        </aside>
+      </section>
+
+      <!-- ===== 12. 2009 — ImageNet ===== -->
+      <section class="era-thaw">
+        <!-- IMAGE: ImageNet 이미지 샘플 모자이크 -->
+        <div class="year-badge">2009</div>
+        <h2>ImageNet — 딥러닝 혁명의 연료</h2>
+        <br>
+        <p>
+          스탠퍼드 대학의 <strong>페이페이 리</strong> 교수가 주도<br>
+          <span style="font-size:0.9em;">1,400만 장의 이미지를 수작업으로 분류한 거대 데이터셋</span>
+        </p>
+        <p class="fragment" style="text-align:center; margin:0.8em 0;">
+          "좋은 알고리즘에는 좋은 데이터가 필요하다"<br>
+          <span style="font-size:0.8em; opacity:0.6;">매년 이미지 인식 대회(ILSVRC)를 개최</span>
+        </p>
+        <div class="impact fragment">
+          <strong>왜 중요한가:</strong> 데이터가 AI의 성패를 가른다는 것을 증명. 이 데이터셋이 없었다면 2012년 AlexNet 혁명도 없었다.
+        </div>
+        <aside class="notes">
+          아마존 Mechanical Turk를 활용해 수만 명이 이미지를 분류했습니다.
+          "데이터의 중요성"을 강조하는 좋은 사례입니다.
+        </aside>
+      </section>
+
+      <!-- ===== 13. AI 봄 구분 슬라이드 ===== -->
+      <section data-background-gradient="linear-gradient(135deg, #1b5e20, #2e7d32, #43a047)">
+        <div class="era-divider">
+          <div class="era-icon">&#127800;</div>
+          <h1 style="color: #c8e6c9 !important;">AI의 봄</h1>
+          <div class="era-years" style="color: #a5d6a7;">2012 ~ 현재</div>
+          <p style="color: #c8e6c9; margin-top:1em; font-size:0.85em;">
+            70년간 쌓인 씨앗이 한꺼번에 꽃을 피우다
+          </p>
+        </div>
+        <aside class="notes">
+          밝은 배경으로 분위기 전환. "드디어 봄이 왔다!"
+          겨울과의 대비를 강조해주세요.
+        </aside>
+      </section>
+
+      <!-- ===== 14. 겨울 vs 봄 비교 ===== -->
+      <section>
+        <h2>무엇이 달라졌을까?</h2>
+        <br>
+        <div class="compare-row">
+          <div class="compare-card compare-winter">
+            <h3>겨울 (1969~2011)</h3>
+            <p style="font-size:0.75em; margin-top:0.5em;">
+              컴퓨터가 느렸다<br>
+              데이터가 없었다<br>
+              이론만 있고 실험이 어려웠다<br>
+              "AI는 안 된다" 분위기
+            </p>
+          </div>
+          <div class="compare-card compare-spring">
+            <h3>봄 (2012~현재)</h3>
+            <p style="font-size:0.75em; margin-top:0.5em;">
+              <strong>GPU</strong>로 계산 속도 폭발<br>
+              <strong>빅데이터</strong> 시대 개막<br>
+              실험 결과가 압도적<br>
+              "AI가 사람을 이겼다!" 뉴스
+            </p>
+          </div>
+        </div>
+        <p class="fragment" style="text-align:center; font-size:0.85em; font-weight:600; color:#2e7d32;">
+          세 가지가 동시에 갖춰졌다: 알고리즘 + 데이터 + 컴퓨팅 파워
+        </p>
+        <aside class="notes">
+          이 세 가지 조건이 맞아떨어진 것이 2012년입니다.
+          "왜 하필 2012년이었는가?"를 설명하는 슬라이드입니다.
+        </aside>
+      </section>
+
+      <!-- ===== 15. 2012 — AlexNet ===== -->
+      <section class="era-spring">
+        <!-- IMAGE: ImageNet 대회 에러율 그래프 (2010~2015, AlexNet에서 급감) -->
+        <div class="year-badge">2012</div>
+        <h2>AlexNet — 딥러닝 혁명의 시작</h2>
+        <br>
+        <p>
+          제프리 힌튼의 제자 <strong>알렉스 크리제프스키</strong>가<br>
+          ImageNet 대회에서 <strong>오류율 16.4% &#8594; 압도적 1위</strong>
+        </p>
+        <p class="fragment" style="text-align:center; margin:0.8em 0;">
+          비결: <strong>GPU</strong>로 깊은 신경망을 학습<br>
+          <span style="font-size:0.8em; opacity:0.6;">2위와의 격차가 10% 이상 — 충격적인 결과</span>
+        </p>
+        <div class="impact fragment">
+          <strong>왜 중요한가:</strong> "딥러닝은 진짜 된다"는 것을 세상에 증명. 이 한 번의 대회가 전 세계 AI 연구의 방향을 바꿨다.
+        </div>
+        <aside class="notes">
+          GPU는 원래 게임용 그래픽카드입니다. "게임용 기술이 AI를 바꿨다"는 점이 재미있습니다.
+          힌튼의 제자라는 점도 강조 — 1986년 역전파를 만든 그 힌튼!
+        </aside>
+      </section>
+
+      <!-- ===== 16. 2016 — 알파고 ===== -->
+      <section class="era-spring">
+        <!-- IMAGE: 알파고 vs 이세돌 대국 장면 -->
+        <div class="year-badge">2016</div>
+        <h2>알파고 vs 이세돌 — 전 세계가 충격</h2>
+        <br>
+        <p>
+          구글 딥마인드의 <strong>AlphaGo</strong>가<br>
+          바둑 세계 최고수 이세돌 9단을 <strong>4:1</strong>로 이기다
+        </p>
+        <p class="fragment" style="text-align:center; margin:0.8em 0; font-size:0.9em;">
+          바둑의 경우의 수: 10<sup>170</sup>가지<br>
+          <span style="font-size:0.85em; opacity:0.7;">(우주의 원자 수 10<sup>80</sup>보다 많다)</span>
+        </p>
+        <div class="impact fragment">
+          <strong>왜 중요한가:</strong> "바둑만큼은 AI가 못 이길 것"이라던 전문가들의 예상을 뒤집었다. AI가 대중의 관심을 받기 시작한 결정적 사건.
+        </div>
+        <aside class="notes">
+          이세돌의 78수(신의 한 수)도 언급하면 좋습니다.
+          한국 학생들에게 가장 와닿는 AI 사건일 수 있습니다.
+          "여러분이 초등학교 때 일어난 일"이라고 시간 감각을 줘보세요.
+        </aside>
+      </section>
+
+      <!-- ===== 17. 2017 — Transformer ===== -->
+      <section class="era-summer">
+        <!-- IMAGE: "Attention Is All You Need" 논문 1페이지 또는 Transformer 구조도 -->
+        <div class="year-badge">2017</div>
+        <h2>"Attention Is All You Need"</h2>
+        <br>
+        <p>
+          구글의 연구자 <strong>8명</strong>이 쓴 논문 한 편<br>
+          <strong>Transformer</strong> 아키텍처를 세상에 내놓다
+        </p>
+        <p class="fragment" style="text-align:center; margin:0.8em 0;">
+          핵심 아이디어: <strong>"어디에 주목할지"를 기계가 스스로 배운다</strong><br>
+          <span style="font-size:0.8em; opacity:0.6;">(Attention Mechanism)</span>
+        </p>
+        <div class="impact fragment">
+          <strong>왜 중요한가:</strong> ChatGPT, GPT-4, 구글 Gemini... 현재 모든 대형 AI의 뼈대. 이 논문 하나가 현대 AI의 시작점이다.
+        </div>
+        <aside class="notes">
+          "8명이 쓴 논문이 세상을 바꿨다"는 점을 강조하세요.
+          8명 중 여러 명이 이후 AI 스타트업을 창업했습니다.
+        </aside>
+      </section>
+
+      <!-- ===== 18. GPT의 진화 ===== -->
+      <section class="era-summer">
+        <h2>GPT 시리즈의 진화</h2>
+        <br>
+        <div class="gpt-timeline">
+          <div class="gpt-card fragment">
+            <div class="gpt-name">GPT-1</div>
+            <div style="font-size:0.75em;">2018</div>
+            <div class="gpt-params">1.17억 파라미터</div>
+          </div>
+          <div class="gpt-card fragment">
+            <div class="gpt-name">GPT-2</div>
+            <div style="font-size:0.75em;">2019</div>
+            <div class="gpt-params">15억 파라미터</div>
+            <div style="font-size:0.65em; color:#e53935; margin-top:0.2em;">"너무 위험해서 비공개"</div>
+          </div>
+          <div class="gpt-card fragment">
+            <div class="gpt-name">GPT-3</div>
+            <div style="font-size:0.75em;">2020</div>
+            <div class="gpt-params">1,750억 파라미터</div>
+            <div style="font-size:0.65em; color:#7b1fa2; margin-top:0.2em;">Few-shot 학습 가능</div>
+          </div>
+          <div class="gpt-card fragment">
+            <div class="gpt-name">GPT-4</div>
+            <div style="font-size:0.75em;">2023</div>
+            <div class="gpt-params">추정 1조+ 파라미터</div>
+            <div style="font-size:0.65em; color:#e65100; margin-top:0.2em;">멀티모달 (텍스트+이미지)</div>
+          </div>
+        </div>
+        <p class="fragment" style="text-align:center; font-size:0.8em; font-weight:600; color:#7b1fa2; margin-top:1em;">
+          5년 만에 파라미터가 1,000배 이상 증가 &#8594; "스케일링 법칙"
+        </p>
+        <aside class="notes">
+          GPT-2가 "위험해서 비공개"라고 했던 것이 불과 3년 후 GPT-3.5가 무료로 공개된 것과 대비됩니다.
+          파라미터 = "기계의 뇌세포 수"라고 비유하면 됩니다.
+        </aside>
+      </section>
+
+      <!-- ===== 19. 2022 — ChatGPT ===== -->
+      <section class="era-summer">
+        <!-- IMAGE: ChatGPT 인터페이스 스크린샷 -->
+        <div class="year-badge">2022</div>
+        <h2>ChatGPT 공개 — 세상이 바뀌다</h2>
+        <br>
+        <p>
+          OpenAI가 GPT-3.5 기반 대화형 AI를 공개<br>
+          <strong>2달 만에 1억 사용자</strong> 돌파
+        </p>
+        <p class="fragment" style="text-align:center; margin:0.8em 0; font-size:0.85em;">
+          비교: 인스타그램 2.5년, 틱톡 9개월, ChatGPT <strong>2개월</strong>
+        </p>
+        <div class="impact fragment">
+          <strong>왜 중요한가:</strong> AI가 "연구자의 것"에서 "모든 사람의 것"이 되는 순간. 여러분도 이미 쓰고 있다!
+        </div>
+        <aside class="notes">
+          학생들에게 "ChatGPT 써본 사람?" 물어보세요. 거의 전원일 것입니다.
+          "여러분이 이미 AI의 역사 안에 있다"는 점을 연결하세요.
+        </aside>
+      </section>
+
+      <!-- ===== 20. 2024 — 노벨상 ===== -->
+      <section class="era-now">
+        <!-- IMAGE: 제프리 힌튼, 데미스 하사비스 노벨상 수상 사진 -->
+        <div class="year-badge">2024</div>
+        <h2>노벨상 — AI 연구자가 세계 최고 영예를</h2>
+        <br>
+        <div class="compare-row">
+          <div class="compare-card" style="background:linear-gradient(135deg, #f57f17, #ff8f00); color:white;">
+            <h3 style="color:#fff9c4 !important;">노벨 물리학상</h3>
+            <p style="font-size:0.8em; margin-top:0.3em;">
+              <strong>제프리 힌튼</strong><br>
+              신경망 기초 연구<br>
+              <span style="font-size:0.85em; opacity:0.8;">(역전파의 그 힌튼!)</span>
+            </p>
+          </div>
+          <div class="compare-card" style="background:linear-gradient(135deg, #f57f17, #ff8f00); color:white;">
+            <h3 style="color:#fff9c4 !important;">노벨 화학상</h3>
+            <p style="font-size:0.8em; margin-top:0.3em;">
+              <strong>데미스 하사비스</strong><br>
+              AlphaFold로 단백질 구조 예측<br>
+              <span style="font-size:0.85em; opacity:0.8;">(알파고의 그 딥마인드!)</span>
+            </p>
+          </div>
+        </div>
+        <div class="impact fragment">
+          <strong>왜 중요한가:</strong> AI가 물리학과 화학의 최고 영예를 동시에 받았다. AI는 더 이상 도구가 아니라, 과학 그 자체가 되었다.
+        </div>
+        <aside class="notes">
+          힌튼은 1986년 역전파, 2012년 AlexNet(제자)에 이어 2024년 노벨상까지.
+          "포기하지 않은 사람"의 이야기입니다. 38년간의 여정!
+        </aside>
+      </section>
+
+      <!-- ===== 21. 2025 — 지금, 여기 ===== -->
+      <section data-background-gradient="linear-gradient(135deg, #ff8f00, #f57f17, #ffca28)">
+        <div style="text-align:center;">
+          <div style="font-size:3em; font-weight:900; color:white; letter-spacing:-0.03em;">2025</div>
+          <h2 style="color:white !important; font-size:1.6em !important;">지금, 여기</h2>
+          <br>
+          <p style="color:rgba(255,255,255,0.9); font-size:1.1em; line-height:1.8;">
+            여러분은 지금 AI를 배우고 있다<br>
+            <span class="fragment">1950년 튜링의 질문에서 시작된 70년의 여정이</span><br>
+            <span class="fragment"><strong>바로 이 교실까지</strong> 이어져 왔다</span>
+          </p>
+          <br>
+          <p class="fragment" style="color:white; font-size:1.3em; font-weight:700;">
+            다음 역사는 누가 쓸까?
+          </p>
+        </div>
+        <aside class="notes">
+          가장 중요한 메시지입니다. "여러분이 AI 역사의 다음 페이지를 쓸 수 있다."
+          잠시 침묵을 두고 학생들이 생각할 시간을 주세요.
+        </aside>
+      </section>
+
+      <!-- ===== 22. 전체 타임라인 정리 ===== -->
+      <section>
+        <h2>AI 70년 한눈에 보기</h2>
+        <div style="font-size:0.6em; line-height:2.4; text-align:left; max-width:90%; margin:0.5rem auto;">
+          <div><span style="display:inline-block; width:4em; font-weight:900; color:#1a237e;">1950</span> 튜링 — "기계가 생각할 수 있는가?"</div>
+          <div><span style="display:inline-block; width:4em; font-weight:900; color:#0d47a1;">1956</span> 다트머스 — "인공지능"이라는 이름의 탄생</div>
+          <div><span style="display:inline-block; width:4em; font-weight:900; color:#0d47a1;">1957</span> 퍼셉트론 — 최초의 학습하는 기계</div>
+          <div><span style="display:inline-block; width:4em; font-weight:900; color:#0d47a1;">1966</span> ELIZA — 최초의 챗봇</div>
+          <div style="color:#455a64;"><span style="display:inline-block; width:4em; font-weight:900;">1969</span> 민스키의 비판 &#8594; 1차 AI 겨울</div>
+          <div style="color:#455a64;"><span style="display:inline-block; width:4em; font-weight:900;">1987</span> 전문가 시스템 실패 &#8594; 2차 AI 겨울</div>
+          <div><span style="display:inline-block; width:4em; font-weight:900; color:#e65100;">1986</span> 역전파 — 겨울 속의 불씨</div>
+          <div><span style="display:inline-block; width:4em; font-weight:900; color:#e65100;">2009</span> ImageNet — 1,400만 장의 연료</div>
+          <div><span style="display:inline-block; width:4em; font-weight:900; color:#2e7d32;">2012</span> AlexNet — 딥러닝 혁명의 시작</div>
+          <div><span style="display:inline-block; width:4em; font-weight:900; color:#2e7d32;">2016</span> 알파고 vs 이세돌</div>
+          <div><span style="display:inline-block; width:4em; font-weight:900; color:#7b1fa2;">2017</span> Transformer — 현대 AI의 뼈대</div>
+          <div><span style="display:inline-block; width:4em; font-weight:900; color:#7b1fa2;">2022</span> ChatGPT — 2달 만에 1억 사용자</div>
+          <div><span style="display:inline-block; width:4em; font-weight:900; color:#f57f17;">2024</span> 노벨상 — AI가 과학의 정점에</div>
+          <div><span style="display:inline-block; width:4em; font-weight:900; color:#f57f17;">2025</span> 지금, 여기 — 여러분의 차례</div>
+        </div>
+        <aside class="notes">
+          전체 타임라인을 빠르게 훑어보는 정리 슬라이드입니다.
+          학생들에게 "가장 인상적이었던 사건"을 물어보세요.
+        </aside>
+      </section>
+
+      <!-- ===== 23. 핵심 교훈 ===== -->
+      <section>
+        <h2>AI 역사가 우리에게 알려주는 것</h2>
+        <br>
+        <ul>
+          <li class="fragment"><strong>실패는 끝이 아니다</strong> — 겨울이 지나면 반드시 봄이 온다</li>
+          <li class="fragment"><strong>포기하지 않는 사람이 역사를 쓴다</strong> — 힌튼의 38년</li>
+          <li class="fragment"><strong>조건이 맞으면 폭발한다</strong> — 알고리즘 + 데이터 + 컴퓨팅</li>
+          <li class="fragment"><strong>기술은 결국 사람에게 돌아온다</strong> — 여러분이 쓰는 ChatGPT</li>
+        </ul>
+        <aside class="notes">
+          각 교훈을 하나씩 이야기하며 해당 사건을 떠올리게 해주세요.
+        </aside>
+      </section>
+
+      <!-- ===== 24. 마무리 ===== -->
+      <section data-background-gradient="linear-gradient(135deg, #1a237e 0%, #7b1fa2 50%, #f57f17 100%)">
+        <div class="closing-slide">
+          <h2 style="color:white !important; line-height:1.6 !important;">
+            70년간 인류는<br>
+            "기계가 생각할 수 있는가?"를 물었습니다
+          </h2>
+          <br>
+          <p style="color:rgba(255,255,255,0.9); font-size:1.1em; line-height:1.8;">
+            <span class="fragment">이제 그 기계는 우리 곁에 있습니다</span><br>
+            <span class="fragment">중요한 건 <strong>"어떻게 함께할 것인가"</strong>입니다</span>
+          </p>
+          <br>
+          <p class="fragment" style="color:rgba(255,255,255,0.7); font-size:0.9em; border-top:1px solid rgba(255,255,255,0.2); padding-top:1em; margin-top:1em;">
+            다음 시간부터 우리는<br>
+            <strong style="color:white; font-size:1.2em;">이 기술의 내부를 직접 들여다봅니다</strong>
+          </p>
+        </div>
+        <aside class="notes">
+          마지막 슬라이드. 여운을 남기며 마무리하세요.
+          "다음 시간에는 직접 신경망을 만들어볼 것"이라고 예고하면 좋습니다.
+        </aside>
+      </section>
+
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/notes/notes.js"></script>
+  <script>
+    Reveal.initialize({
+      hash: true,
+      slideNumber: 'c/t',
+      transition: 'slide',
+      transitionSpeed: 'default',
+      plugins: [RevealNotes]
+    });
+  </script>
+</body>
+</html>

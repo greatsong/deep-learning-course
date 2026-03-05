@@ -1,0 +1,85 @@
+/* Deep Learning Course - Custom Styles */
+
+/* Section headers */
+.md-nav__item--section > .md-nav__link {
+  font-weight: 700;
+  text-transform: none;
+}
+
+/* Admonition custom: activity box */
+.md-typeset .admonition.activity,
+.md-typeset details.activity {
+  border-color: #ff9800;
+}
+.md-typeset .activity > .admonition-title,
+.md-typeset .activity > summary {
+  background-color: rgba(255, 152, 0, 0.1);
+}
+
+/* Key concept highlight */
+.key-concept {
+  background: linear-gradient(135deg, #e0f2f1, #b2dfdb);
+  border-left: 4px solid #009688;
+  padding: 1rem 1.2rem;
+  border-radius: 0 8px 8px 0;
+  margin: 1.5rem 0;
+  font-size: 1.05em;
+}
+
+.key-concept strong {
+  color: #00695c;
+}
+
+[data-md-color-scheme="slate"] .key-concept {
+  background: linear-gradient(135deg, #1a3a38, #1e4d47);
+  border-left-color: #4db6ac;
+}
+
+[data-md-color-scheme="slate"] .key-concept strong {
+  color: #80cbc4;
+}
+
+/* Timeline styling for history chapter */
+.timeline-item {
+  border-left: 3px solid #009688;
+  padding-left: 1.5rem;
+  margin-bottom: 2rem;
+  position: relative;
+}
+
+.timeline-item::before {
+  content: '';
+  position: absolute;
+  left: -8px;
+  top: 0;
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  background: #009688;
+}
+
+.timeline-year {
+  font-size: 1.4em;
+  font-weight: 700;
+  color: #009688;
+  margin-bottom: 0.3rem;
+}
+
+[data-md-color-scheme="slate"] .timeline-year {
+  color: #4db6ac;
+}
+
+/* Practice step indicators */
+.step-number {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: #009688;
+  color: white;
+  font-weight: 700;
+  font-size: 0.85em;
+  margin-right: 0.5rem;
+}

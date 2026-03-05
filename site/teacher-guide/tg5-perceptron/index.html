@@ -1,0 +1,2158 @@
+
+<!doctype html>
+<html lang="ko" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="선형 분류의 한계를 체험하고 다층 신경망의 필요성을 이해하는 수업">
+      
+      
+        <meta name="author" content="석리송">
+      
+      
+      
+        <link rel="prev" href="../tg4-teachable-machine/">
+      
+      
+        <link rel="next" href="../tg6-loss/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+    
+    
+      
+        <title>5차시 교사용 지도서 - 퍼셉트론과 신경망 - 딥러닝 여행: AI는 어떻게 생각할까?</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans+KR:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Noto Sans KR";--md-code-font:"JetBrains Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="orange">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#5" class="md-skip">
+          콘텐츠로 이동
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="상단/헤더">
+    <a href="../.." title="딥러닝 여행: AI는 어떻게 생각할까?" class="md-header__button md-logo" aria-label="딥러닝 여행: AI는 어떻게 생각할까?" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17.5 15.5c0 1.11-.89 2-2 2s-2-.89-2-2 .9-2 2-2 2 .9 2 2m-9-2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.89 2-2-.89-2-2-2M23 15v3c0 .55-.45 1-1 1h-1v1c0 1.11-.89 2-2 2H5a2 2 0 0 1-2-2v-1H2c-.55 0-1-.45-1-1v-3c0-.55.45-1 1-1h1c0-3.87 3.13-7 7-7h1V5.73c-.6-.34-1-.99-1-1.73 0-1.1.9-2 2-2s2 .9 2 2c0 .74-.4 1.39-1 1.73V7h1c3.87 0 7 3.13 7 7h1c.55 0 1 .45 1 1m-2 1h-2v-2c0-2.76-2.24-5-5-5h-4c-2.76 0-5 2.24-5 5v2H3v1h2v3h14v-3h2z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            딥러닝 여행: AI는 어떻게 생각할까?
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              5차시 교사용 지도서 - 퍼셉트론과 신경망
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="orange"  aria-label="다크 모드로 전환"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="다크 모드로 전환" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="teal" data-md-color-accent="orange"  aria-label="라이트 모드로 전환"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="라이트 모드로 전환" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="검색" placeholder="검색" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="검색">
+        
+        <button type="reset" class="md-search__icon md-icon" title="지우기" aria-label="지우기" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            검색 초기화
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="탭" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  시작하기
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../section1/ch0-history/" class="md-tabs__link">
+          
+  
+  
+  섹션 1 — 숫자로 이해하는 세상
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../section2/ch4-teachable-machine/" class="md-tabs__link">
+          
+  
+  
+  섹션 2 — 딥러닝 I
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../section3/ch8-attention/" class="md-tabs__link">
+          
+  
+  
+  섹션 3 — 딥러닝 II
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../overview/" class="md-tabs__link">
+          
+  
+  
+  교사용 지도서
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="네비게이션" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="딥러닝 여행: AI는 어떻게 생각할까?" class="md-nav__button md-logo" aria-label="딥러닝 여행: AI는 어떻게 생각할까?" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17.5 15.5c0 1.11-.89 2-2 2s-2-.89-2-2 .9-2 2-2 2 .9 2 2m-9-2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.89 2-2-.89-2-2-2M23 15v3c0 .55-.45 1-1 1h-1v1c0 1.11-.89 2-2 2H5a2 2 0 0 1-2-2v-1H2c-.55 0-1-.45-1-1v-3c0-.55.45-1 1-1h1c0-3.87 3.13-7 7-7h1V5.73c-.6-.34-1-.99-1-1.73 0-1.1.9-2 2-2s2 .9 2 2c0 .74-.4 1.39-1 1.73V7h1c3.87 0 7 3.13 7 7h1c.55 0 1 .45 1 1m-2 1h-2v-2c0-2.76-2.24-5-5-5h-4c-2.76 0-5 2.24-5 5v2H3v1h2v3h14v-3h2z"/></svg>
+
+    </a>
+    딥러닝 여행: AI는 어떻게 생각할까?
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    시작하기
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    섹션 1 — 숫자로 이해하는 세상
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    섹션 1 — 숫자로 이해하는 세상
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../section1/ch0-history/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    0. AI, 70년의 꿈
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../section1/ch1-tokenization/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. AI는 왜 글자를 못 셀까?
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../section1/ch2-probability/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. AI에게 창의적인 답을 시키려면?
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../section1/ch3-embedding/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. 단어로 산수를 할 수 있다고?
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    섹션 2 — 딥러닝 I
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    섹션 2 — 딥러닝 I
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../section2/ch4-teachable-machine/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4. AI야, 이게 뭔지 맞혀봐
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../section2/ch5-perceptron/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5. 최소 뉴런으로 문제를 풀어라
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../section2/ch6-loss/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6. 잘했는지 못했는지, 어떻게 알지?
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../section2/ch7-gradient-descent/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7. 모르면 어떻게 하나요?
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    섹션 3 — 딥러닝 II
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    섹션 3 — 딥러닝 II
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../section3/ch8-attention/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8. AI는 어디를 집중해서 볼까?
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../section3/ch9-transformer/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9. ChatGPT 답이 왜 한 글자씩 나올까?
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    교사용 지도서
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    교사용 지도서
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    수업 운영 가이드
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tg0-history/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    0차시 지도안
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tg1-tokenization/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1차시 지도안
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tg2-probability/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2차시 지도안
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tg3-embedding/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3차시 지도안
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tg4-teachable-machine/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4차시 지도안
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5차시 지도안
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5차시 지도안
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="목차">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      목차
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. 수업 개요
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. 수업 개요">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        학습 목표
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        준비물
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        시간 배분
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 도입 시나리오 (7분)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. 도입 시나리오 (7분)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        교사 대사 전문
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. 이론 전개 포인트 (10분)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. 이론 전개 포인트 (10분)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        설명 순서
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-tf-playground-23" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. 실습 운영 상세 — TF Playground 대결 (23분)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. 실습 운영 상세 — TF Playground 대결 (23분)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        사전 세팅 안내 (3분)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        대결 규칙 안내 (2분)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        대결 진행 (10분)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="대결 진행 (10분)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        교사 순회 가이드
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        결과 공유 (8분)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. 학생 예상 반응 &amp; 교사 피드백
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. 학생 예상 반응 &amp; 교사 피드백">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        도입 단계 (A4 활동)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        이론 단계
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tf-playground" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        실습 단계 (TF Playground)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. 수준별 분화 전략
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. 수준별 분화 전략">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        상위 수준 (코딩 관심 학생)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        중위 수준 (보통 학생)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        하위 수준 (어려워하는 학생)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-faq" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. 자주 나오는 질문 FAQ
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. 정리 &amp; 다음 차시 연결 멘트 (10분)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8. 정리 &amp; 다음 차시 연결 멘트 (10분)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        오늘 배운 핵심 정리
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        다음 차시 연결
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        마무리 활동
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tg6-loss/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6차시 지도안
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tg7-gradient-descent/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7차시 지도안
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tg8-attention/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8차시 지도안
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tg9-transformer/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9차시 지도안
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="5">5차시: 퍼셉트론과 신경망 — 선 하나로 안 되면?<a class="headerlink" href="#5" title="Permanent link">&para;</a></h1>
+<h2 id="1">1. 수업 개요<a class="headerlink" href="#1" title="Permanent link">&para;</a></h2>
+<h3 id="_1">학습 목표<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>선형 분류의 한계</strong>를 직접 체험하고, 직선 하나로 나눌 수 없는 문제가 있음을 안다.</li>
+<li>다층 신경망(Multi-layer Network)의 필요성을 XOR 문제를 통해 이해한다.</li>
+<li>TensorFlow Playground에서 뉴런과 레이어를 조작하며 신경망의 구조를 탐구한다.</li>
+</ul>
+<h3 id="_2">준비물<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>항목</th>
+<th>수량</th>
+<th>비고</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A4 프린트 (점 찍힌 종이)</td>
+<td>1인 2장</td>
+<td>쉬운 패턴 1장 + XOR 패턴 1장</td>
+</tr>
+<tr>
+<td>자</td>
+<td>1인 1개</td>
+<td>직선 긋기용</td>
+</tr>
+<tr>
+<td>노트북</td>
+<td>모둠당 1대 이상</td>
+<td>playground.tensorflow.org</td>
+</tr>
+<tr>
+<td>프로젝터/대형 모니터</td>
+<td>1대</td>
+<td>교사 시연 및 대결 결과 공유</td>
+</tr>
+</tbody>
+</table>
+<h3 id="_3">시간 배분<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>단계</th>
+<th>시간</th>
+<th>활동 내용</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>도입</td>
+<td>7분</td>
+<td>A4 직선 분류 활동 + XOR 충격</td>
+</tr>
+<tr>
+<td>이론 전개</td>
+<td>10분</td>
+<td>퍼셉트론 개념, AI 겨울 이야기, 다층 신경망</td>
+</tr>
+<tr>
+<td>실습</td>
+<td>23분</td>
+<td>TF Playground 대결</td>
+</tr>
+<tr>
+<td>정리</td>
+<td>10분</td>
+<td>핵심 정리 + 다음 차시 예고</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="2-7">2. 도입 시나리오 (7분)<a class="headerlink" href="#2-7" title="Permanent link">&para;</a></h2>
+<h3 id="_4">교사 대사 전문<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<blockquote>
+<p>"지난 시간에 Teachable Machine으로 AI를 만들었죠? 오늘은 그 AI 안에 뭐가 들어있는지 뜯어봅시다. AI의 가장 작은 부품부터 시작할 거예요."</p>
+</blockquote>
+<p><strong>[A4 프린트 — 쉬운 패턴 배부]</strong></p>
+<blockquote>
+<p>"자, 종이에 빨간 점과 파란 점이 찍혀 있죠? 미션은 간단합니다. <strong>자로 직선을 딱 하나만 그어서</strong> 빨간 점과 파란 점을 나눠보세요. 30초 드릴게요. 시작!"</p>
+</blockquote>
+<p><strong>[30초 후]</strong></p>
+<blockquote>
+<p>"다 됐죠? 쉽죠? 이게 바로 AI의 가장 기본 단위가 하는 일이에요. 직선 하나로 '이쪽은 빨강, 저쪽은 파랑'을 나누는 거예요."</p>
+</blockquote>
+<p><strong>[A4 프린트 — XOR 패턴 배부]</strong></p>
+<blockquote>
+<p>"그럼 이건요? 두 번째 종이를 보세요. 역시 직선 하나로 나눠보세요. 30초!"</p>
+</blockquote>
+<p><strong>[30초 후 — 학생들 웅성웅성]</strong></p>
+<blockquote>
+<p>"안 되죠? 아무리 해도 직선 하나로는 안 되죠? <strong>바로 이거예요.</strong> 1969년에 이 문제를 발견한 과학자가 있었는데, 그때 AI 연구가 거의 멈췄어요. 무려 10년 넘게. 이걸 'AI의 겨울'이라고 해요."</p>
+</blockquote>
+<div class="admonition tip">
+<p class="admonition-title">XOR 프린트 준비 팁</p>
+<p>2x2 격자에 대각선으로 같은 색을 배치하세요: 좌상-빨강, 우상-파랑, 좌하-파랑, 우하-빨강. 점의 크기를 크게(지름 1cm 이상) 하고 여러 개씩 군집으로 찍으면 더 명확합니다.</p>
+</div>
+<hr />
+<h2 id="3-10">3. 이론 전개 포인트 (10분)<a class="headerlink" href="#3-10" title="Permanent link">&para;</a></h2>
+<h3 id="_5">설명 순서<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<p><strong>1단계: 퍼셉트론 = 직선 하나 (3분)</strong></p>
+<blockquote>
+<p>"아까 직선 하나로 나눈 것, 그게 '퍼셉트론'이에요. 1957년에 만들어진 AI의 가장 기본 단위예요. 입력을 받아서 직선 하나로 '예/아니오'를 판단하는 장치입니다."</p>
+</blockquote>
+<p><strong>[칠판에 간단한 퍼셉트론 다이어그램]</strong></p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>입력1 ──┐
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>        ├──→ [ 뉴런 ] ──→ 출력 (빨강 or 파랑)
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>입력2 ──┘
+</span></code></pre></div>
+<blockquote>
+<p>"입력이 들어오면, 가중치를 곱하고, 더해서, 기준을 넘으면 '빨강', 안 넘으면 '파랑'. 이게 전부예요."</p>
+</blockquote>
+<p><strong>2단계: XOR 문제와 AI의 겨울 (3분)</strong></p>
+<blockquote>
+<p>"그런데 아까 두 번째 종이... 직선 하나로 안 됐죠? 이걸 XOR 문제라고 해요. 1969년에 민스키라는 유명한 과학자가 '퍼셉트론은 이 문제를 못 푼다'고 증명했어요. 그러자 사람들이 'AI 연구해 봐야 소용없네' 하고 연구비를 끊었어요. 10년 넘게."</p>
+</blockquote>
+<div class="admonition info">
+<p class="admonition-title">역사 포인트</p>
+<p>AI의 겨울 이야기는 학생들에게 "과학도 실패와 좌절이 있다"는 메시지를 전달하는 좋은 기회입니다. 간략하게만 짚되, 감정적으로 전달하면 기억에 남습니다.</p>
+</div>
+<p><strong>3단계: 해결책 = 층을 쌓자! (4분)</strong></p>
+<blockquote>
+<p>"그런데 누군가 이런 생각을 했어요. '직선 하나로 안 되면... <strong>여러 개 쌓으면 되지 않을까?</strong>'"</p>
+</blockquote>
+<p><strong>[칠판에 2층 신경망 그림]</strong></p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>입력 ──→ [뉴런][뉴런] ──→ [뉴런] ──→ 출력
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>         (은닉층)         (출력층)
+</span></code></pre></div>
+<blockquote>
+<p>"첫 번째 층에서 직선 2개를 긋고, 두 번째 층에서 그 결과를 합치면? XOR도 풀 수 있어요! 직선을 조합하면 곡선도, 복잡한 경계도 만들 수 있거든요. 이게 <strong>다층 신경망</strong>, 영어로 Multi-layer Network예요."</p>
+<p>"Teachable Machine도 안에 이런 층이 쌓여 있었던 거예요. 우리가 사진을 넣으면 여러 층의 뉴런들이 패턴을 찾아낸 거죠."</p>
+</blockquote>
+<hr />
+<h2 id="4-tf-playground-23">4. 실습 운영 상세 — TF Playground 대결 (23분)<a class="headerlink" href="#4-tf-playground-23" title="Permanent link">&para;</a></h2>
+<h3 id="3">사전 세팅 안내 (3분)<a class="headerlink" href="#3" title="Permanent link">&para;</a></h3>
+<p><strong>[화면: playground.tensorflow.org]</strong></p>
+<blockquote>
+<p>"자, 이 사이트가 TensorFlow Playground예요. 신경망을 직접 만져볼 수 있는 놀이터입니다."</p>
+</blockquote>
+<p>교사가 화면을 보여주며 인터페이스 설명:</p>
+<table>
+<thead>
+<tr>
+<th>영역</th>
+<th>설명</th>
+<th>학생 안내 멘트</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>왼쪽 데이터</td>
+<td>점들의 패턴</td>
+<td>"이게 우리가 나눠야 할 데이터예요"</td>
+</tr>
+<tr>
+<td>가운데 뉴런</td>
+<td>신경망 구조</td>
+<td>"여기가 AI의 뇌예요. 뉴런을 추가/삭제할 수 있어요"</td>
+</tr>
+<tr>
+<td>오른쪽 출력</td>
+<td>분류 결과</td>
+<td>"AI가 어떻게 나눴는지 색으로 보여줘요"</td>
+</tr>
+<tr>
+<td>상단 재생 버튼</td>
+<td>학습 시작/정지</td>
+<td>"이걸 누르면 AI가 학습을 시작해요"</td>
+</tr>
+<tr>
+<td>Test loss</td>
+<td>손실값</td>
+<td>"이 숫자가 작을수록 잘 분류한 거예요"</td>
+</tr>
+</tbody>
+</table>
+<h3 id="2">대결 규칙 안내 (2분)<a class="headerlink" href="#2" title="Permanent link">&para;</a></h3>
+<blockquote>
+<p>"모둠 대결을 할 거예요! 규칙을 알려줄게요."</p>
+</blockquote>
+<div class="admonition example">
+<p class="admonition-title">대결 규칙</p>
+<ol>
+<li><strong>데이터셋</strong>: spiral (나선형) — 왼쪽 아래 데이터 패널에서 선택</li>
+<li><strong>목표</strong>: Test loss를 <strong>0.1 이하</strong>로 만들기</li>
+<li><strong>승리 조건</strong>: 가장 <strong>적은 뉴런 수</strong>로 목표 달성한 모둠 우승</li>
+<li><strong>통일 설정</strong>: Learning rate = 0.03, Activation = ReLU</li>
+<li><strong>시간 제한</strong>: 10분</li>
+</ol>
+</div>
+<h3 id="10">대결 진행 (10분)<a class="headerlink" href="#10" title="Permanent link">&para;</a></h3>
+<h4 id="_6">교사 순회 가이드<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
+<table>
+<thead>
+<tr>
+<th>상황</th>
+<th>교사 개입</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>뉴런을 너무 많이 추가</td>
+<td>"뉴런 20개면 되긴 하는데, 8개로도 가능해요. 줄여볼래요?"</td>
+</tr>
+<tr>
+<td>레이어 추가를 모름</td>
+<td>"가운데 + 버튼으로 층을 추가할 수 있어요"</td>
+</tr>
+<tr>
+<td>Loss가 안 내려감</td>
+<td>"Epoch 수를 확인하세요. 충분히 학습했나요? 혹시 뉴런이 너무 적진 않은지도요."</td>
+</tr>
+<tr>
+<td>바로 성공한 모둠</td>
+<td>"축하해요! 이제 뉴런 수를 최소로 줄여보세요. 최소 기록에 도전!"</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition tip">
+<p class="admonition-title">교사용 정답 가이드</p>
+<p>spiral 데이터셋의 경우, <strong>2개 은닉층 x 각 4뉴런 = 총 8뉴런</strong> 정도면 Loss 0.1 이하 달성 가능합니다. 3개 은닉층을 사용하면 더 적은 뉴런으로도 됩니다.</p>
+</div>
+<h3 id="8">결과 공유 (8분)<a class="headerlink" href="#8" title="Permanent link">&para;</a></h3>
+<blockquote>
+<p>"시간 끝! 각 모둠의 결과를 볼게요."</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>공유 항목</th>
+<th>방법</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>뉴런 수</td>
+<td>칠판에 모둠별 기록</td>
+</tr>
+<tr>
+<td>레이어 구조</td>
+<td>"몇 층에 뉴런 몇 개?"</td>
+</tr>
+<tr>
+<td>Test loss</td>
+<td>최종 수치</td>
+</tr>
+<tr>
+<td>시각화</td>
+<td>프로젝터로 최우수 모둠 화면 공유</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>"가장 적은 뉴런으로 성공한 모둠은 OO모둠, 총 O개! 뉴런이 적다는 건 <strong>효율적인 AI</strong>라는 뜻이에요."</p>
+<p>"뉴런 하나하나가 어떤 패턴을 잡는지 보이시나요? 가운데 뉴런 위에 마우스를 올려보세요. 각 뉴런이 담당하는 영역이 보여요. 이걸 합치면 나선형을 분류할 수 있게 되는 거예요."</p>
+</blockquote>
+<hr />
+<h2 id="5_1">5. 학생 예상 반응 &amp; 교사 피드백<a class="headerlink" href="#5_1" title="Permanent link">&para;</a></h2>
+<h3 id="a4">도입 단계 (A4 활동)<a class="headerlink" href="#a4" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>학생 반응</th>
+<th>교사 피드백</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>"선을 구부리면 안 돼요?"</td>
+<td>"규칙이 직선 하나예요. 직선 하나가 퍼셉트론이거든요. 하나로 안 되면? 여러 개 쓰는 거죠!"</td>
+</tr>
+<tr>
+<td>"대각선으로 그으면 돼요!" (쉬운 패턴)</td>
+<td>"맞아요! 어떤 각도든 직선 하나면 되니까 퍼셉트론으로 풀 수 있는 문제예요."</td>
+</tr>
+<tr>
+<td>"두 번째는 진짜 안 되는데요?"</td>
+<td>"네, 안 됩니다. 수학적으로 증명된 거예요. 그래서 다른 방법이 필요한 거예요."</td>
+</tr>
+</tbody>
+</table>
+<h3 id="_7">이론 단계<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>학생 반응</th>
+<th>교사 피드백</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>"이게 왜 중요해요?"</td>
+<td>"1969년에 이 문제 때문에 AI 연구가 거의 멈췄어요. 10년 넘게. 하지만 누군가 '층을 쌓자'는 아이디어를 냈고, 그게 지금의 딥러닝이 된 거예요."</td>
+</tr>
+<tr>
+<td>"뉴런이 진짜 뇌의 뉴런이에요?"</td>
+<td>"영감을 받았지만 실제 뇌와는 많이 달라요. 이름만 비슷한 거예요. 진짜 뇌는 훨씬 더 복잡하고 신비로워요."</td>
+</tr>
+<tr>
+<td>"레이어가 뭐예요?"</td>
+<td>"층이에요. 판단을 여러 단계로 나누는 거예요. 1층에서 대략 나누고, 2층에서 더 세밀하게 나누고... 이런 식이에요."</td>
+</tr>
+<tr>
+<td>"딥러닝의 '딥'이 이 층이에요?"</td>
+<td>"정확해요! 층을 깊이(deep) 쌓는다고 해서 딥러닝이에요. 아주 좋은 관찰이에요."</td>
+</tr>
+<tr>
+<td>(어려워하는 학생) "너무 어려워요"</td>
+<td>"핵심만 기억하세요: <strong>선 하나로 안 되면 여러 개 쌓자!</strong> 이것만 알면 돼요."</td>
+</tr>
+</tbody>
+</table>
+<h3 id="tf-playground">실습 단계 (TF Playground)<a class="headerlink" href="#tf-playground" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>학생 반응</th>
+<th>교사 피드백</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>"뭘 눌러야 해요?"</td>
+<td>"왼쪽 아래에서 spiral 데이터를 선택하고, 재생 버튼을 누르면 학습이 시작돼요. 가운데에서 + 버튼으로 뉴런을 추가할 수 있어요."</td>
+</tr>
+<tr>
+<td>"Loss가 0이 안 돼요"</td>
+<td>"0에 가까우면 충분해요. 0.05 이하면 아주 잘한 거예요. 완벽한 0은 오히려 과적합일 수 있어요."</td>
+</tr>
+<tr>
+<td>"다른 모둠보다 뉴런이 많은데..."</td>
+<td>"적은 뉴런이 목표지만, 일단 성공하는 게 중요해요. 성공한 후에 하나씩 줄여보세요."</td>
+</tr>
+<tr>
+<td>"ReLU가 뭐예요?"</td>
+<td>"뉴런이 신호를 처리하는 방식이에요. 음수는 0으로 만들고, 양수는 그대로 통과시키는 필터라고 생각하세요."</td>
+</tr>
+<tr>
+<td>"다른 데이터셋도 해보고 싶어요"</td>
+<td>"대결 끝나고 시간 남으면 해보세요! circle, exclusive or 등 다양한 패턴이 있어요."</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="6">6. 수준별 분화 전략<a class="headerlink" href="#6" title="Permanent link">&para;</a></h2>
+<h3 id="_8">상위 수준 (코딩 관심 학생)<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
+<div class="admonition tip">
+<p class="admonition-title">심화 활동</p>
+<ul>
+<li><strong>뉴런별 시각화 해석</strong>: 각 뉴런이 어떤 경계를 학습했는지 마우스 오버로 관찰</li>
+<li><strong>활성화 함수 비교</strong>: ReLU vs Sigmoid vs Tanh로 바꿔보고 차이 관찰</li>
+<li><strong>최소 뉴런 도전</strong>: spiral을 6개 이하 뉴런으로 풀어보기</li>
+<li><strong>데이터셋 비교</strong>: circle, XOR, spiral 각각에 필요한 최소 구조 탐색</li>
+</ul>
+</div>
+<h3 id="_9">중위 수준 (보통 학생)<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
+<div class="admonition note">
+<p class="admonition-title">기본 목표</p>
+<ul>
+<li>대결에 적극 참여하여 Loss 0.1 이하 달성</li>
+<li>뉴런 추가/삭제, 레이어 추가의 효과를 관찰</li>
+<li>"뉴런이 많을수록 복잡한 패턴을 나눌 수 있다"는 결론 도출</li>
+</ul>
+</div>
+<h3 id="_10">하위 수준 (어려워하는 학생)<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h3>
+<div class="admonition warning">
+<p class="admonition-title">지원 방안</p>
+<ul>
+<li>교사가 함께 화면을 보며 조작 안내</li>
+<li><strong>"뉴런 추가" 버튼만 직접 클릭</strong>하게 하고, 나머지는 교사가 설정</li>
+<li>시각적 변화에 집중: "색이 어떻게 바뀌었나요?" "점들이 잘 나뉘었나요?"</li>
+<li>A4 활동에서의 체험을 자주 연결: "아까 직선으로 안 됐던 거, 여기서 여러 개 쓰니까 되죠?"</li>
+</ul>
+</div>
+<hr />
+<h2 id="7-faq">7. 자주 나오는 질문 FAQ<a class="headerlink" href="#7-faq" title="Permanent link">&para;</a></h2>
+<details class="question">
+<summary>Q1. TensorFlow Playground가 접속이 안 돼요.</summary>
+<p>학교 네트워크에서 차단될 수 있습니다. 전날 확인이 필수입니다. 대안으로 교사가 화면을 프로젝터로 공유하고, 학생들이 "3번 뉴런 추가해 주세요" 식으로 지시하는 방식도 가능합니다.</p>
+</details>
+<details class="question">
+<summary>Q2. 퍼셉트론과 뉴런의 차이가 뭔가요?</summary>
+<p>퍼셉트론은 1957년 Frank Rosenblatt가 만든 초기 모델의 이름이고, 뉴런(노드)은 신경망의 구성 요소를 부르는 일반적인 용어입니다. 수업에서는 "퍼셉트론 = 가장 단순한 뉴런 하나"로 설명하면 됩니다.</p>
+</details>
+<details class="question">
+<summary>Q3. 학생이 미분이나 수학적 원리를 물어보면?</summary>
+<p>"가중치를 조절해서 최적의 직선을 찾는 과정이 있는데, 그게 수학적으로는 미분을 사용해요. 하지만 오늘은 '직선 여러 개를 쌓는다'는 구조만 이해하면 충분해요. 수학은 대학에서 배울 수 있어요."</p>
+</details>
+<details class="question">
+<summary>Q4. AI의 겨울은 왜 끝났나요?</summary>
+<p>1986년에 제프리 힌턴 등이 "역전파(Backpropagation)" 알고리즘을 발표하면서 다층 신경망을 효과적으로 학습시킬 수 있게 되었습니다. 이후 컴퓨터 성능 향상, 빅데이터와 맞물리며 지금의 딥러닝 시대가 열렸습니다.</p>
+</details>
+<details class="question">
+<summary>Q5. spiral 데이터 대결에서 적절한 힌트 수준은?</summary>
+<p>처음 3분은 자유 탐색, 5분 시점에 "은닉층을 2개 이상 해보세요"라고 힌트, 8분 시점에 "각 층에 뉴런 4개씩 해보세요"라고 구체적 힌트를 줍니다. 단계적으로 힌트를 주면 성취감과 학습 효과를 동시에 얻을 수 있습니다.</p>
+</details>
+<hr />
+<h2 id="8-10">8. 정리 &amp; 다음 차시 연결 멘트 (10분)<a class="headerlink" href="#8-10" title="Permanent link">&para;</a></h2>
+<h3 id="_11">오늘 배운 핵심 정리<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h3>
+<blockquote>
+<p>"오늘 뭘 배웠는지 세 줄로 정리할게요."</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>번호</th>
+<th>핵심</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><strong>퍼셉트론</strong> = 직선 하나로 분류하는 가장 단순한 AI</td>
+</tr>
+<tr>
+<td>2</td>
+<td>직선 하나로 안 되면(XOR 문제) → <strong>층을 쌓아서</strong> 해결</td>
+</tr>
+<tr>
+<td>3</td>
+<td>층이 깊어질수록 복잡한 패턴도 분류 가능 = <strong>딥러닝</strong></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>"아까 A4에서 직선 하나로 안 됐던 게, Playground에서 뉴런 여러 개 쌓으니까 나선형도 분류됐죠? 바로 그거예요."</p>
+</blockquote>
+<h3 id="_12">다음 차시 연결<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h3>
+<blockquote>
+<p>"그런데 궁금한 거 없어요? AI가 학습한다고 했는데, 도대체 <strong>어떻게</strong> 학습하는 걸까요? 재생 버튼을 누르면 Loss가 줄어들었잖아요. AI는 자기가 얼마나 틀렸는지를 어떻게 아는 걸까요?"</p>
+<p>"다음 시간에는 바로 그 '틀린 정도를 숫자로 만드는 방법', 즉 <strong>손실함수</strong>를 배울 거예요. AI의 성적표 같은 거죠. 기대하세요!"</p>
+</blockquote>
+<h3 id="_13">마무리 활동<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h3>
+<ul>
+<li>자기 평가 체크리스트 작성 (1분)<ul>
+<li>[ ] 퍼셉트론이 무엇인지 한 문장으로 설명할 수 있다</li>
+<li>[ ] XOR 문제가 왜 직선 하나로 안 되는지 안다</li>
+<li>[ ] 다층 신경망이 필요한 이유를 이해했다</li>
+</ul>
+</li>
+</ul>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  맨위로
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="하단/푸터" >
+        
+          
+          <a href="../tg4-teachable-machine/" class="md-footer__link md-footer__link--prev" aria-label="이전: 4차시 지도안">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                이전
+              </span>
+              <div class="md-ellipsis">
+                4차시 지도안
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../tg6-loss/" class="md-footer__link md-footer__link--next" aria-label="다음: 6차시 지도안">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                다음
+              </span>
+              <div class="md-ellipsis">
+                6차시 지도안
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["content.code.copy", "content.code.annotate", "navigation.instant", "navigation.tabs", "navigation.top", "navigation.footer", "navigation.sections", "toc.integrate"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\ud074\ub9bd\ubcf4\ub4dc\uc5d0 \ubcf5\uc0ac\ub428", "clipboard.copy": "\ud074\ub9bd\ubcf4\ub4dc\ub85c \ubcf5\uc0ac", "search.result.more.one": "\uc774 \ubb38\uc11c\uc5d0\uc11c 1\uac1c\uc758 \uac80\uc0c9 \uacb0\uacfc \ub354 \ubcf4\uae30", "search.result.more.other": "\uc774 \ubb38\uc11c\uc5d0\uc11c #\uac1c\uc758 \uac80\uc0c9 \uacb0\uacfc \ub354 \ubcf4\uae30", "search.result.none": "\uac80\uc0c9\uc5b4\uc640 \uc77c\uce58\ud558\ub294 \ubb38\uc11c\uac00 \uc5c6\uc2b5\ub2c8\ub2e4", "search.result.one": "1\uac1c\uc758 \uc77c\uce58\ud558\ub294 \ubb38\uc11c", "search.result.other": "#\uac1c\uc758 \uc77c\uce58\ud558\ub294 \ubb38\uc11c", "search.result.placeholder": "\uac80\uc0c9\uc5b4\ub97c \uc785\ub825\ud558\uc138\uc694", "search.result.term.missing": "\ud3ec\ud568\ub418\uc9c0 \uc54a\uc740 \uac80\uc0c9\uc5b4", "select.version": "\ubc84\uc804 \uc120\ud0dd"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

@@ -1557,17 +1557,15 @@
 </span></code></pre></div>
 <p><strong>전체 지도가 없어도</strong>, 발밑 기울기만으로 <strong>내리막 방향</strong>을 알 수 있어요. 그 방향으로 한 발짝씩 내디디면, 결국 <strong>골짜기(최저점)</strong>에 도달할 수 있어요.</p>
 <div class="key-concept">
-
-**핵심 비유: 안개 속 하산**
-
-- **산의 높이** = 손실(Loss)의 크기
-- **산꼭대기** = 손실이 큰 상태 (학습 초기)
-- **골짜기(최저점)** = 손실이 가장 작은 상태 (학습 목표)
-- **발밑 기울기** = 기울기(Gradient)
-- **한 발짝 내딛기** = 가중치를 조금 수정하기
-
+<p><strong>핵심 비유: 안개 속 하산</strong></p>
+<ul>
+<li><strong>산의 높이</strong> = 손실(Loss)의 크기</li>
+<li><strong>산꼭대기</strong> = 손실이 큰 상태 (학습 초기)</li>
+<li><strong>골짜기(최저점)</strong> = 손실이 가장 작은 상태 (학습 목표)</li>
+<li><strong>발밑 기울기</strong> = 기울기(Gradient)</li>
+<li><strong>한 발짝 내딛기</strong> = 가중치를 조금 수정하기</li>
+</ul>
 </div>
-
 <hr />
 <h2 id="2-gradient-descent">개념 2: 경사하강법(Gradient Descent)<a class="headerlink" href="#2-gradient-descent" title="Permanent link">&para;</a></h2>
 <p>이제 정식 이름을 붙여볼게요.</p>
@@ -1655,17 +1653,34 @@
 </div>
 </div>
 <div class="key-concept">
-
-**학습률 정리**
-
-| 학습률 | 보폭 | 결과 |
-|:------:|:----:|------|
-| **너무 크다** | 너무 큼 | 최저점을 지나쳐서 발산 |
-| **너무 작다** | 너무 작음 | 수렴은 하지만 너무 느림 |
-| **적절하다** | 딱 좋음 | 빠르고 정확하게 수렴 |
-
+<p><strong>학습률 정리</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">학습률</th>
+<th style="text-align: center;">보폭</th>
+<th>결과</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><strong>너무 크다</strong></td>
+<td style="text-align: center;">너무 큼</td>
+<td>최저점을 지나쳐서 발산</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>너무 작다</strong></td>
+<td style="text-align: center;">너무 작음</td>
+<td>수렴은 하지만 너무 느림</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>적절하다</strong></td>
+<td style="text-align: center;">딱 좋음</td>
+<td>빠르고 정확하게 수렴</td>
+</tr>
+</tbody>
+</table>
 </div>
-
 <div class="admonition warning">
 <p class="admonition-title">학습률 설정, 쉽지 않아요</p>
 <p>"적절한" 학습률은 문제마다 달라요. 보통 0.001 ~ 0.01 사이에서 시작하지만, 실험을 통해 찾아야 해요. AI 개발에서 가장 중요한 <strong>하이퍼파라미터</strong> 중 하나예요.</p>
@@ -1732,13 +1747,9 @@
 <li>각 가중치를 책임만큼 수정해요</li>
 </ol>
 <div class="key-concept">
-
-**역전파(Backpropagation)란?**
-
-출력에서 입력 방향으로 거꾸로 올라가며, 각 가중치가 손실에 얼마나 기여했는지 계산하고, 그만큼 수정하는 방법이에요. "오답 분석을 거꾸로 해서 실수한 곳을 찾는 것"과 같아요.
-
+<p><strong>역전파(Backpropagation)란?</strong></p>
+<p>출력에서 입력 방향으로 거꾸로 올라가며, 각 가중치가 손실에 얼마나 기여했는지 계산하고, 그만큼 수정하는 방법이에요. "오답 분석을 거꾸로 해서 실수한 곳을 찾는 것"과 같아요.</p>
 </div>
-
 <div class="admonition tip">
 <p class="admonition-title">왜 '역'전파인가요?</p>
 <p>보통 신경망은 입력 → 출력 순서로 계산해요 (순전파, Forward). 역전파는 그 반대 방향, 출력 → 입력으로 돌아가며 기울기를 전달해요. 그래서 <strong>역(Back)</strong>전파라고 불러요.</p>
@@ -1866,13 +1877,9 @@
 </tbody>
 </table>
 <div class="key-concept">
-
-**오늘의 핵심 한 줄**
-
-기울기 방향으로 조금씩 이동. 보폭이 너무 크면 발산, 너무 작으면 수렴 못한다.
-
+<p><strong>오늘의 핵심 한 줄</strong></p>
+<p>기울기 방향으로 조금씩 이동. 보폭이 너무 크면 발산, 너무 작으면 수렴 못한다.</p>
 </div>
-
 <hr />
 <div class="admonition quote">
 <p class="admonition-title">다음 시간 예고</p>

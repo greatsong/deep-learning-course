@@ -1561,13 +1561,9 @@
 <li>두 번째: 거의 맞출 뻔했으니, <strong>조금만</strong> 고치면 돼요</li>
 </ul>
 <div class="key-concept">
-
-**핵심 개념: 손실(Loss)이란?**
-
-"맞았다/틀렸다"가 아니라, **얼마나 틀렸는지**를 숫자로 표현한 것이에요. 이 숫자가 있어야 AI는 "얼마큼 고쳐야 하는지" 알 수 있어요.
-
+<p><strong>핵심 개념: 손실(Loss)이란?</strong></p>
+<p>"맞았다/틀렸다"가 아니라, <strong>얼마나 틀렸는지</strong>를 숫자로 표현한 것이에요. 이 숫자가 있어야 AI는 "얼마큼 고쳐야 하는지" 알 수 있어요.</p>
 </div>
-
 <hr />
 <h2 id="2-loss-function">개념 2: 손실함수(Loss Function)란?<a class="headerlink" href="#2-loss-function" title="Permanent link">&para;</a></h2>
 <h3 id="_4">과녁 비유로 이해해 봐요<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
@@ -1652,14 +1648,12 @@
 </table>
 <p>마지막 경우를 보세요. AI가 "고양이는 거의 아닐 거야"라고 <strong>자신 있게 주장했는데 정답이 고양이</strong>였어요. 이때 Cross-Entropy는 <strong>엄청난 벌점</strong>을 매겨요.</p>
 <div class="key-concept">
-
-**MSE vs Cross-Entropy, 한 줄 비교**
-
-- **MSE**: 숫자 예측에 적합. "얼마나 차이나?" 를 벌점으로.
-- **Cross-Entropy**: 분류 문제에 적합. "자신감 있게 틀리면 최악!" 을 벌점으로.
-
+<p><strong>MSE vs Cross-Entropy, 한 줄 비교</strong></p>
+<ul>
+<li><strong>MSE</strong>: 숫자 예측에 적합. "얼마나 차이나?" 를 벌점으로.</li>
+<li><strong>Cross-Entropy</strong>: 분류 문제에 적합. "자신감 있게 틀리면 최악!" 을 벌점으로.</li>
+</ul>
 </div>
-
 <div class="admonition tip">
 <p class="admonition-title">더 알아보기: Cross-Entropy 직관</p>
 <p>Cross-Entropy는 -log(예측 확률)로 계산해요. log 함수의 특성상, 예측 확률이 0에 가까우면 벌점이 무한대로 치솟아요. 그래서 "확신하면서 틀리는 것"이 최악인 거예요. 주로 분류 문제(고양이/개, 감정 분석 등)에서 사용해요.</p>
@@ -1749,13 +1743,9 @@
 </div>
 </div>
 <div class="key-concept">
-
-**핵심 통찰: 기준이 다르면 결과가 다르다**
-
-손실함수는 AI의 **심사위원**이에요. 어떤 손실함수를 선택하느냐에 따라, AI가 같은 데이터에서도 **완전히 다른 것**을 배워요. 그래서 문제에 맞는 손실함수를 고르는 게 중요해요!
-
+<p><strong>핵심 통찰: 기준이 다르면 결과가 다르다</strong></p>
+<p>손실함수는 AI의 <strong>심사위원</strong>이에요. 어떤 손실함수를 선택하느냐에 따라, AI가 같은 데이터에서도 <strong>완전히 다른 것</strong>을 배워요. 그래서 문제에 맞는 손실함수를 고르는 게 중요해요!</p>
 </div>
-
 <div class="admonition warning">
 <p class="admonition-title">손실함수 선택은 사람이 해요</p>
 <p>AI가 스스로 "나는 이 손실함수를 쓸래"라고 정하지 않아요. <strong>사람(개발자)</strong>이 문제의 성격을 보고 적절한 손실함수를 골라줘야 해요. 이 선택이 AI의 학습 방향을 결정해요.</p>
@@ -1901,13 +1891,9 @@
 </tbody>
 </table>
 <div class="key-concept">
-
-**오늘의 핵심 한 줄**
-
-틀린 정도를 숫자로 바꾸는 것이 손실함수. 이 숫자를 줄이는 것이 학습.
-
+<p><strong>오늘의 핵심 한 줄</strong></p>
+<p>틀린 정도를 숫자로 바꾸는 것이 손실함수. 이 숫자를 줄이는 것이 학습.</p>
 </div>
-
 <hr />
 <div class="admonition quote">
 <p class="admonition-title">다음 시간 예고</p>

@@ -1500,19 +1500,15 @@
 <h3 id="1-ai">1. AI는 어떻게 사진을 "보는" 걸까?<a class="headerlink" href="#1-ai" title="Permanent link">&para;</a></h3>
 <p>우리가 고양이 사진을 보면 "아, 고양이다!" 하고 바로 알잖아요. 그런데 컴퓨터는 사진을 볼 때 우리처럼 의미를 파악하는 게 아니에요. 컴퓨터가 보는 건 <strong>숫자 격자</strong>예요.</p>
 <div class="key-concept">
-
-**사진 = 숫자 격자 (픽셀)**
-
-사진은 아주 작은 점(픽셀)들이 빼곡히 모여 있는 거예요. 각 픽셀에는 **0~255** 사이의 숫자가 들어 있어요.
-
-- **0** = 완전히 까만색
-- **255** = 완전히 하얀색
-- **128** = 중간 회색
-
-컬러 사진이라면? 빨강(R), 초록(G), 파랑(B) 세 장의 숫자 격자가 겹쳐져 있는 거예요!
-
+<p><strong>사진 = 숫자 격자 (픽셀)</strong></p>
+<p>사진은 아주 작은 점(픽셀)들이 빼곡히 모여 있는 거예요. 각 픽셀에는 <strong>0~255</strong> 사이의 숫자가 들어 있어요.</p>
+<ul>
+<li><strong>0</strong> = 완전히 까만색</li>
+<li><strong>255</strong> = 완전히 하얀색</li>
+<li><strong>128</strong> = 중간 회색</li>
+</ul>
+<p>컬러 사진이라면? 빨강(R), 초록(G), 파랑(B) 세 장의 숫자 격자가 겹쳐져 있는 거예요!</p>
 </div>
-
 <p>예를 들어 100×100 픽셀짜리 사진이 있다면, 컴퓨터가 보는 건 10,000개의 숫자 묶음이에요. 사람은 "고양이의 귀 모양"을 보지만, 컴퓨터는 "이 위치의 숫자들이 이런 패턴으로 배열되어 있구나"를 보는 거예요.</p>
 <div class="admonition tip">
 <p class="admonition-title">일상 비유</p>
@@ -1521,18 +1517,13 @@
 <hr />
 <h3 id="2-classification">2. 분류(Classification)란?<a class="headerlink" href="#2-classification" title="Permanent link">&para;</a></h3>
 <div class="key-concept">
-
-**분류 = 입력을 받아서 카테고리를 정해주는 것**
-
+<p><strong>분류 = 입력을 받아서 카테고리를 정해주는 것</strong></p>
 <div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>입력(사진) → AI 모델 → 출력(카테고리)
 </span></code></pre></div>
-
-예시:
+<p>예시:
 - 사진 넣기 → AI → "고양이" (95%), "강아지" (5%)
-- 손 사진 → AI → "주먹" (90%), "보" (10%)
-
+- 손 사진 → AI → "주먹" (90%), "보" (10%)</p>
 </div>
-
 <p>Teachable Machine이 하는 일이 바로 이거예요. 우리가 보여준 사진들에서 <strong>패턴을 찾아내고</strong>, 새로운 사진이 들어오면 "이 패턴이랑 비슷하니까 이 카테고리야!"라고 판단하는 거예요.</p>
 <p>마치 친구 얼굴을 외우는 것과 비슷해요. 여러 번 보면서 특징을 기억해두고, 나중에 멀리서 봐도 "아, 저 사람이구나!" 하고 알아보는 거죠.</p>
 <hr />
@@ -1577,13 +1568,9 @@
 <h3 id="4-filter-cnn">4. 필터(Filter)와 특징 추출 — CNN 맛보기<a class="headerlink" href="#4-filter-cnn" title="Permanent link">&para;</a></h3>
 <p>자, 그러면 AI는 숫자 덩어리에서 패턴을 어떻게 찾을까요? 여기서 등장하는 게 <strong>필터</strong>예요.</p>
 <div class="key-concept">
-
-**필터 = 작은 창문으로 이미지를 훑는 것**
-
-손가락으로 프레임을 만들어서 사진 위를 천천히 움직여 본다고 상상해 봐요. 그 작은 창문이 지나가면서 "여기에 선이 있네!", "여기에 모서리가 있네!" 하고 특징을 발견하는 거예요.
-
+<p><strong>필터 = 작은 창문으로 이미지를 훑는 것</strong></p>
+<p>손가락으로 프레임을 만들어서 사진 위를 천천히 움직여 본다고 상상해 봐요. 그 작은 창문이 지나가면서 "여기에 선이 있네!", "여기에 모서리가 있네!" 하고 특징을 발견하는 거예요.</p>
 </div>
-
 <p>이런 필터를 여러 층으로 쌓으면 점점 복잡한 것을 인식할 수 있어요:</p>
 <div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>첫 번째 층: 선, 모서리 발견       ─┐
 </span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>                                    │ 점점 복잡한
@@ -1726,17 +1713,15 @@
 <hr />
 <h2 id="_5">정리<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
 <div class="key-concept">
-
-**핵심 정리**
-
-1. 컴퓨터에게 사진은 **0~255 숫자로 이루어진 격자(픽셀)**예요
-2. **분류(Classification)**란 입력을 받아 카테고리를 정해주는 것이에요
-3. AI는 데이터에서 **패턴**을 찾아 분류해요
-4. 학습 데이터의 **양, 다양성, 품질**이 결과를 좌우해요
-5. **데이터가 바뀌면 결과가 바뀐다** — 이것이 가장 중요한 원리예요
-
+<p><strong>핵심 정리</strong></p>
+<ol>
+<li>컴퓨터에게 사진은 <strong>0~255 숫자로 이루어진 격자(픽셀)</strong>예요</li>
+<li><strong>분류(Classification)</strong>란 입력을 받아 카테고리를 정해주는 것이에요</li>
+<li>AI는 데이터에서 <strong>패턴</strong>을 찾아 분류해요</li>
+<li>학습 데이터의 <strong>양, 다양성, 품질</strong>이 결과를 좌우해요</li>
+<li><strong>데이터가 바뀌면 결과가 바뀐다</strong> — 이것이 가장 중요한 원리예요</li>
+</ol>
 </div>
-
 <div class="admonition tip">
 <p class="admonition-title">다음 시간 예고</p>
 <p>다음 시간에는 AI의 기본 단위인 <strong>퍼셉트론</strong>에 대해 배울 거예요. "뉴런 하나로 할 수 있는 일"과 "할 수 없는 일"을 직접 실험해 볼 거예요!</p>
